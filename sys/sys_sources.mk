@@ -1,0 +1,1 @@
+SYS_SOURCES += sys/startup.c
