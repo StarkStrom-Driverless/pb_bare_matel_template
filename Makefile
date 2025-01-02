@@ -7,6 +7,7 @@ LDFLAGS ?= -Tlink.ld -nostartfiles -nostdlib --specs nano.specs -lc -lgcc -Wl,--
 # Include the sources.mk file
 include sys/sys_sources.mk
 include usr/usr_sources.mk
+include usr_configs/usr_config_sources.mk
 
 ifeq ($(OS),Windows_NT)
   RM = cmd /C del /Q /F
@@ -16,8 +17,8 @@ endif
 
 build: firmware.bin
 
-firmware.elf: $(SYS_SOURCES) $(USR_SOURCES)
-	arm-none-eabi-gcc main.c $(SYS_SOURCES) $(USR_SOURCES) $(CFLAGS) $(LDFLAGS) -o $@
+firmware.elf: $(SYS_SOURCES) $(USR_SOURCES) $(USR_CONFIG_SOURCES)
+	arm-none-eabi-gcc main.c $(SYS_SOURCES) $(USR_SOURCES) ${USR_CONFIG_SOURCES} $(CFLAGS) $(LDFLAGS) -o $@
 
 firmware.bin: firmware.elf
 	arm-none-eabi-objcopy -O binary $< $@

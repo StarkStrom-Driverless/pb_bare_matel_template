@@ -9,33 +9,29 @@
 #include "ss_gpio.h"
 #include "ss_delay.h"
 #include "ss_systick.h"
+#include "ss_timer.h"
 
 // USR_CONFIGS
 #include "systick_handles.h"
+#include "systick_isr.h"
 
 extern Systick_Handle handle1;
-
-void SysTick_Handler(void) {
-  handle1.tick++;
-}
-
-
 
 
 
 
 int main(void) {
-  uint16_t led = PIN('C', 1);
+  uint16_t led = PIN('A', 2);
   RCC->AHB1ENR |= BIT(PINBANK(led));
-  gpio_set_mode(led, GPIO_MODE_OUTPUT);
+  gpio_set_mode(led, GPIO_MODE_AF);
+  gpio_init_pwm(led, 159, 2000);
 
   systick_init(16000000/1000);
 
   for (;;) {
-    if (handle_timer(&handle1)) {
-      gpio_write(led, GPIO_TOGGLE, 0);
-    }
-
+    //if (handle_timer(&handle1)) {
+      gpio_write(led, 1000);
+    //}
   }
   return 0;
 }
