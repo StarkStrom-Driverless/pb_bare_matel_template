@@ -28,10 +28,14 @@ int main(void) {
 
   systick_init(16000000/1000);
 
+  uint16_t pwm_val = 0;
+
   for (;;) {
-    //if (handle_timer(&handle1)) {
-      gpio_write(led, 1000);
-    //}
+    if (handle_timer(&handle1)) {
+      gpio_write(led, pwm_val);
+      pwm_val += 1;
+      if (pwm_val > 2000) pwm_val = 0;
+    }
   }
   return 0;
 }

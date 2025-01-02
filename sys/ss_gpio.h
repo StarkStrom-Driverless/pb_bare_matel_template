@@ -22,38 +22,14 @@ static inline void gpio_init_pwm(uint16_t pin, uint16_t prescaler, uint16_t auto
   struct tim* timer = pin_timer_configs[pin].timer;
   if (!timer) return;
 
-  
   volatile uint32_t* afr = (PINNO(pin) <= 7) ? &GPIO(PINBANK(pin))->AFR[0] : &GPIO(PINBANK(pin))->AFR[1];
-  switch (PINNO(pin)) {
-    case 0 : ((union AFR*)afr)->fields.afr0 = pin_timer_configs[pin].af; break;
-    case 1 : ((union AFR*)afr)->fields.afr1 = pin_timer_configs[pin].af; break;
-    case 2 : ((union AFR*)afr)->fields.afr2 = pin_timer_configs[pin].af; break;
-    case 3 : ((union AFR*)afr)->fields.afr3 = pin_timer_configs[pin].af; break;
-    case 4 : ((union AFR*)afr)->fields.afr4 = pin_timer_configs[pin].af; break;
-    case 5 : ((union AFR*)afr)->fields.afr5 = pin_timer_configs[pin].af; break;
-    case 6 : ((union AFR*)afr)->fields.afr6 = pin_timer_configs[pin].af; break;
-    case 7 : ((union AFR*)afr)->fields.afr7 = pin_timer_configs[pin].af; break;
-    default : break;
-  }
-  
+  *afr |= (pin_timer_configs[pin].af << 4 * PINNO(pin)); 
   
   volatile uint32_t* rcc_ptr = pin_timer_configs[pin].rcc_ptr;
   *rcc_ptr |= (1 << pin_timer_configs[pin].rcc_bit_pos);
  
   timer->PSC = prescaler;
   timer->ARR = auto_reload;
-
-/*  
-  ((union PRC*)(&(timer->PSC)))->fields.psc = prescaler;
-  ((union ARR*)(&(timer->ARR)))->fields.arr = auto_reload;
-  
-
-  volatile uint32_t* psc = (volatile uint32_t*)(0x40000C00 + 0x28);
-  *psc = prescaler;
-
-  volatile uint32_t* arr = (volatile uint32_t*)(0x40000C00 + 0x2c);
-  *arr = auto_reload;
-*/
   
   switch (pin_timer_configs[pin].channel)
   {
@@ -76,14 +52,6 @@ static inline void gpio_init_pwm(uint16_t pin, uint16_t prescaler, uint16_t auto
     default : break;
   }
   
-
- /*
-  volatile uint32_t* ccmr = (volatile uint32_t*)(0x40000C00 + 0x1c);
-  *ccmr |= (1 << 6) | (1 << 5);
-
-  volatile uint32_t* ccer = (volatile uint32_t*)(0x40000C00 + 0x20);
-  *ccer |= (1 << 8); 
-*/
   ((union CR1*)(&timer->CR1))->fields.cen = 1;
 
   pin_timer_configs[pin].enable = 1;
