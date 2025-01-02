@@ -88,6 +88,22 @@ union CR1 {
     volatile uint32_t cr1;
 };
 
+union BDTR
+{
+    struct FIELDS_BDTR {
+        volatile uint8_t dt : 8;
+        volatile uint8_t lock : 2;
+        volatile uint8_t ossi : 1;
+        volatile uint8_t ossr : 1;
+        volatile uint8_t bke : 1;
+        volatile uint8_t bkp : 1;
+        volatile uint8_t aoe : 1;
+        volatile uint8_t moe : 1;
+    } fields;
+    volatile uint32_t bdtr;
+};
+
+
 struct pin_timer_config {
     struct tim* timer;
     uint8_t channel;
@@ -95,57 +111,58 @@ struct pin_timer_config {
     volatile uint32_t* rcc_ptr;
     uint8_t rcc_bit_pos;
     uint8_t af : 4;
+    uint8_t advanced;
 };
 
 struct pin_timer_config pin_timer_configs[48] = {
-    [PIN('A', 0)]  = {TIM5, 1, 0, &RCC->APB1ENR, 3, 0x02},
-    [PIN('A', 1)]  = {TIM5, 2, 0, &RCC->APB1ENR, 3, 0x02}, 
-    [PIN('A', 2)]  = {TIM5, 3, 0, &RCC->APB1ENR, 3, 0x02},
-    [PIN('A', 3)]  = {TIM5, 4, 0, &RCC->APB1ENR, 3, 0x02},
-    [PIN('A', 4)]  = {0,0, 0, 0, 0, 0},
-    [PIN('A', 5)]  = {TIM2, 1, 0, &RCC->APB1ENR, 0, 0x01},
-    [PIN('A', 6)]  = {TIM3, 1, 0, &RCC->APB1ENR, 1, 0x02},
-    [PIN('A', 7)]  = {TIM3, 2, 0, &RCC->APB1ENR, 1, 0x02},
-    [PIN('A', 8)]  = {TIM1, 1, 0, &RCC->APB2ENR, 0, 0x01},
-    [PIN('A', 9)]  = {TIM1, 2, 0, &RCC->APB2ENR, 0, 0x01},
-    [PIN('A', 10)] = {TIM1, 3, 0, &RCC->APB2ENR, 0, 0x01},
-    [PIN('A', 11)] = {TIM1, 4, 0, &RCC->APB2ENR, 0, 0x01},
-    [PIN('A', 12)] = {0,0, 0, 0, 0, 0},
-    [PIN('A', 13)] = {0,0, 0, 0, 0, 0},
-    [PIN('A', 14)] = {0,0, 0, 0, 0, 0},
-    [PIN('A', 15)] = {TIM2, 1, 0, &RCC->APB1ENR, 0, 0x01},
-    [PIN('B', 0)]  = {TIM3, 3, 0, &RCC->APB1ENR, 1, 0x02},
-    [PIN('B', 1)]  = {TIM3, 4, 0, &RCC->APB1ENR, 1, 0x02},
-    [PIN('B', 2)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 3)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 4)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 5)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 6)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 7)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 8)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 9)]  = {0,0, 0, 0, 0, 0},
-    [PIN('B', 10)] = {TIM2, 3, 0, &RCC->APB1ENR, 0, 0x01},
-    [PIN('B', 11)] = {TIM2, 4, 0, &RCC->APB1ENR, 0, 0x01},
-    [PIN('B', 12)] = {0,0, 0, 0, 0, 0},
-    [PIN('B', 13)] = {0,0, 0, 0, 0, 0},
-    [PIN('B', 14)] = {TIM12, 1, 0, &RCC->APB1ENR, 6, 0x03},
-    [PIN('B', 15)] = {TIM12, 2, 0, &RCC->APB1ENR, 6, 0x03},
-    [PIN('C', 0)]  = {0,0, 0, 0, 0, 0},
-    [PIN('C', 1)]  = {0,0, 0, 0, 0, 0},
-    [PIN('C', 2)]  = {0,0, 0, 0, 0, 0},
-    [PIN('C', 3)]  = {0,0, 0, 0, 0, 0},
-    [PIN('C', 4)]  = {0,0, 0, 0, 0, 0},
-    [PIN('C', 5)]  = {0,0, 0, 0, 0, 0},
-    [PIN('C', 6)]  = {TIM8, 1, 0, &RCC->APB2ENR, 1, 0x03},
-    [PIN('C', 7)]  = {TIM8, 2, 0, &RCC->APB2ENR, 1, 0x03},
-    [PIN('C', 8)]  = {TIM8, 3, 0, &RCC->APB2ENR, 1, 0x03},
-    [PIN('C', 9)]  = {TIM8, 4, 0, &RCC->APB2ENR, 1, 0x03},
-    [PIN('C', 10)] = {0,0, 0, 0, 0, 0},
-    [PIN('C', 11)] = {0,0, 0, 0, 0, 0},
-    [PIN('C', 12)] = {0,0, 0, 0, 0, 0},
-    [PIN('C', 13)] = {0,0, 0, 0, 0, 0},
-    [PIN('C', 14)] = {0,0, 0, 0, 0, 0},
-    [PIN('C', 15)] = {0,0, 0, 0, 0, 0}
+    [PIN('A', 0)]  = {TIM5, 1, 0, &RCC->APB1ENR, 3, 0x02, 0},
+    [PIN('A', 1)]  = {TIM5, 2, 0, &RCC->APB1ENR, 3, 0x02, 0}, 
+    [PIN('A', 2)]  = {TIM5, 3, 0, &RCC->APB1ENR, 3, 0x02, 0},
+    [PIN('A', 3)]  = {TIM5, 4, 0, &RCC->APB1ENR, 3, 0x02, 0},
+    [PIN('A', 4)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('A', 5)]  = {TIM2, 1, 0, &RCC->APB1ENR, 0, 0x01, 0},
+    [PIN('A', 6)]  = {TIM3, 1, 0, &RCC->APB1ENR, 1, 0x02, 0},
+    [PIN('A', 7)]  = {TIM3, 2, 0, &RCC->APB1ENR, 1, 0x02, 0},
+    [PIN('A', 8)]  = {TIM1, 1, 0, &RCC->APB2ENR, 0, 0x01, 1},
+    [PIN('A', 9)]  = {TIM1, 2, 0, &RCC->APB2ENR, 0, 0x01, 1},
+    [PIN('A', 10)] = {TIM1, 3, 0, &RCC->APB2ENR, 0, 0x01, 1},
+    [PIN('A', 11)] = {TIM1, 4, 0, &RCC->APB2ENR, 0, 0x01, 1},
+    [PIN('A', 12)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('A', 13)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('A', 14)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('A', 15)] = {TIM2, 1, 0, &RCC->APB1ENR, 0, 0x01, 0},
+    [PIN('B', 0)]  = {TIM3, 3, 0, &RCC->APB1ENR, 1, 0x02, 0},
+    [PIN('B', 1)]  = {TIM3, 4, 0, &RCC->APB1ENR, 1, 0x02, 0},
+    [PIN('B', 2)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 3)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 4)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 5)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 6)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 7)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 8)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 9)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 10)] = {TIM2, 3, 0, &RCC->APB1ENR, 0, 0x01, 0},
+    [PIN('B', 11)] = {TIM2, 4, 0, &RCC->APB1ENR, 0, 0x01, 0},
+    [PIN('B', 12)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 13)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('B', 14)] = {TIM12, 1, 0, &RCC->APB1ENR, 6, 0x09, 0},
+    [PIN('B', 15)] = {TIM12, 2, 0, &RCC->APB1ENR, 6, 0x09, 0},
+    [PIN('C', 0)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 1)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 2)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 3)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 4)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 5)]  = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 6)]  = {TIM8, 1, 0, &RCC->APB2ENR, 1, 0x03, 1},
+    [PIN('C', 7)]  = {TIM8, 2, 0, &RCC->APB2ENR, 1, 0x03, 1},
+    [PIN('C', 8)]  = {TIM8, 3, 0, &RCC->APB2ENR, 1, 0x03, 1},
+    [PIN('C', 9)]  = {TIM8, 4, 0, &RCC->APB2ENR, 1, 0x03, 1},
+    [PIN('C', 10)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 11)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 12)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 13)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 14)] = {0,0, 0, 0, 0, 0, 0},
+    [PIN('C', 15)] = {0,0, 0, 0, 0, 0, 0}
 };
 
 

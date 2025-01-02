@@ -6,12 +6,13 @@
 #ifndef _GPIO_H
 #define _GPIO_H
 
-enum {GPIO_ON, GPIO_OFF, GPIO_TOGGLE, GPIO_PWM};
+enum {GPIO_ON, GPIO_OFF, GPIO_TOGGLE};
 
-// Enum values are per datasheet: 0, 1, 2, 3
 enum { GPIO_MODE_INPUT, GPIO_MODE_OUTPUT, GPIO_MODE_AF, GPIO_MODE_ANALOG };
 
 static inline void gpio_set_mode(uint16_t pin, uint8_t mode) {
+  RCC->AHB1ENR |= BIT(PINBANK(pin));
+
   struct gpio *gpio = GPIO(PINBANK(pin));
   int n = PINNO(pin);
   gpio->MODER &= ~(3U << (n * 2));
@@ -22,12 +23,14 @@ static inline void gpio_init_pwm(uint16_t pin, uint16_t prescaler, uint16_t auto
   struct tim* timer = pin_timer_configs[pin].timer;
   if (!timer) return;
 
-  volatile uint32_t* afr = (PINNO(pin) <= 7) ? &GPIO(PINBANK(pin))->AFR[0] : &GPIO(PINBANK(pin))->AFR[1];
-  *afr |= (pin_timer_configs[pin].af << 4 * PINNO(pin)); 
   
+  volatile uint32_t* afr = (PINNO(pin) <= 7) ? &GPIO(PINBANK(pin))->AFR[0] : &GPIO(PINBANK(pin))->AFR[1];
+  *afr |= (pin_timer_configs[pin].af << 4 * (PINNO(pin) - ((PINNO(pin) <= 7) ? 0 : 8)) ); 
+  
+
   volatile uint32_t* rcc_ptr = pin_timer_configs[pin].rcc_ptr;
   *rcc_ptr |= (1 << pin_timer_configs[pin].rcc_bit_pos);
- 
+  
   timer->PSC = prescaler;
   timer->ARR = auto_reload;
   
@@ -51,6 +54,8 @@ static inline void gpio_init_pwm(uint16_t pin, uint16_t prescaler, uint16_t auto
       break;
     default : break;
   }
+  if (pin_timer_configs[pin].advanced)
+    ((union BDTR*)(&timer->BDTR))->fields.moe = 1;
   
   ((union CR1*)(&timer->CR1))->fields.cen = 1;
 
