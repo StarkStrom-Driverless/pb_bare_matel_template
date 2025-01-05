@@ -32,15 +32,12 @@ extern uint16_t can1_rx;
 
 int main(void) {
 
-
-
-
   inti_pb_pins();
 
+  // 1MBAUD
   CAN_Init(can1_tx, can1_rx);
 
   systick_init(16000000/1000);
-
 
   uint8_t data[8] = {1, 2, 3, 4, 5, 6, 7};
 
@@ -51,7 +48,6 @@ int main(void) {
     }
 
     CAN1_RX0_IRQHandler();
-    
   }
   return 0;
 }

@@ -12,56 +12,6 @@
 
 extern Systick_Handle handle2;
 
-
-
-/*
-
-#define CAN_TSR         (*(volatile uint32_t *)(CAN1_BASE + 0x08))
-#define CAN_TI0R        (*(volatile uint32_t *)(CAN1_BASE + 0x180))
-#define CAN_TDT0R       (*(volatile uint32_t *)(CAN1_BASE + 0x184))
-#define CAN_TDL0R       (*(volatile uint32_t *)(CAN1_BASE + 0x188))
-#define CAN_TDH0R       (*(volatile uint32_t *)(CAN1_BASE + 0x18C))
-
-
-#define CAN1_BASE       0x40006400U
-#define CAN_RF0R        (*(volatile uint32_t *)(CAN1_BASE + 0x0C))
-#define CAN_RI0R        (*(volatile uint32_t *)(CAN1_BASE + 0x1B0))
-#define CAN_RDT0R       (*(volatile uint32_t *)(CAN1_BASE + 0x1B4))
-#define CAN_RDL0R       (*(volatile uint32_t *)(CAN1_BASE + 0x1B8))
-#define CAN_RDH0R       (*(volatile uint32_t *)(CAN1_BASE + 0x1BC))
-#define CAN_IER         (*(volatile uint32_t *)(CAN1_BASE + 0x14))
-
-#define NVIC_ISER0 *((volatile uint32_t*)0xE000E100)
-
-#define CAN_MCR_INRQ    (1 << 0)
-#define CAN_MCR_SLEEP   (1 << 1)
-#define CAN_MCR_ABOM    (1 << 6)
-#define CAN_MSR_INAK    (1 << 0)
-#define CAN_TSR_TME0    (1 << 26)
-#define CAN_RF0R_FMP0   (0x3 << 0)
-
-
-#define RCC_BASE        0x40023800
-#define FLASH_BASE      0x40023C00
-#define GPIOB_BASE      0x40020400
-
-#define RCC_CR          (*(volatile uint32_t *)(RCC_BASE + 0x00))
-#define RCC_PLLCFGR     (*(volatile uint32_t *)(RCC_BASE + 0x04))
-#define RCC_CFGR        (*(volatile uint32_t *)(RCC_BASE + 0x08))
-#define RCC_AHB1ENR     (*(volatile uint32_t *)(RCC_BASE + 0x30))
-#define RCC_APB1ENR     (*(volatile uint32_t *)(RCC_BASE + 0x40))
-
-#define FLASH_ACR       (*(volatile uint32_t *)(FLASH_BASE + 0x00))
-
-#define GPIOB_MODER     (*(volatile uint32_t *)(GPIOB_BASE + 0x00))
-#define GPIOB_AFRL      (*(volatile uint32_t *)(GPIOB_BASE + 0x20))
-
-#define CAN1_MCR        (*(volatile uint32_t *)(CAN1_BASE + 0x00))
-#define CAN1_MSR        (*(volatile uint32_t *)(CAN1_BASE + 0x04))
-#define CAN1_BTR        (*(volatile uint32_t *)(CAN1_BASE + 0x1C))
-*/
-
-
  enum { APB1_PRE = 5 /* AHB clock / 4 */, APB2_PRE = 4 /* AHB clock / 2 */ }; 
  enum { PLL_HSI = 16, PLL_M = 8, PLL_N = 180, PLL_P = 2 };  // Run at 180 Mhz 
  #define FLASH_LATENCY 5 
@@ -104,6 +54,7 @@ void SystemClock_Config(void) {
 
 
 void CAN_Init(uint16_t tx_pin, uint16_t rx_pin) {
+    //FÜR später
     //SystemClock_Config();
 
     RCC->APB1ENR |= (1 << 25);
@@ -163,7 +114,7 @@ void CAN_Init(uint16_t tx_pin, uint16_t rx_pin) {
     can_mcr->fields.inrq = 0;
     while(can_msr->fields.inak == 1);
 
-    
+    //Für später - Muss warscheinlich PRIO in NVIC gepackt noch werden
     //CAN_IER |= (1 << 1); // FIFO 0 message pending interrupt
     //NVIC_ISER0 |= (1 << 20); // Enable CAN1_RX0 interrupt in NVIC
 }

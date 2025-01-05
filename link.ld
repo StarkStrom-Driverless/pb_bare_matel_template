@@ -1,9 +1,9 @@
 ENTRY(_reset);
 MEMORY {
   flash(rx)  : ORIGIN = 0x08000000, LENGTH = 1024k
-  sram(rwx) : ORIGIN = 0x20000000, LENGTH = 128k  /* remaining 64k in a separate address space */
+  sram(rwx) : ORIGIN = 0x20000000, LENGTH = 128k 
 }
-_estack     = ORIGIN(sram) + LENGTH(sram);    /* stack points to end of SRAM */
+_estack     = ORIGIN(sram) + LENGTH(sram);
 
 SECTIONS {
   .vectors  : { KEEP(*(.vectors)) }   > flash
@@ -11,19 +11,19 @@ SECTIONS {
   .rodata   : { *(.rodata*) }         > flash
 
   .data : {
-    _sdata = .;   /* .data section start */
+    _sdata = .;
     *(.first_data)
     *(.data SORT(.data.*))
-    _edata = .;  /* .data section end */
+    _edata = .;
   } > sram AT > flash
   _sidata = LOADADDR(.data);
 
   .bss : {
-    _sbss = .;              /* .bss section start */
+    _sbss = .;
     *(.bss SORT(.bss.*) COMMON)
-    _ebss = .;              /* .bss section end */
+    _ebss = .;
   } > sram
 
   . = ALIGN(8);
-  _end = .;     /* for cmsis_gcc.h  */
+  _end = .;
 }
