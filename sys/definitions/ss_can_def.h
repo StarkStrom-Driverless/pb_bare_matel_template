@@ -5,6 +5,18 @@
 
 struct can_cntr {
     volatile uint32_t CAN_MCR, CAN_MSR, CAN_TSR, CAN_RF0R, CAN_RF1R, CAN_IER, CAN_ESR, CAN_BTR;
+    volatile uint32_t space_1[88];
+    volatile uint32_t CAN_TI0R, CAN_TDT0R, CAN_TDL0R, CAN_TDH0R, CAN_TI1R, CAN_TDT1R, CAN_TDL1R, CAN_TDH1R, CAN_TI2R, CAN_TDT2R, CAN_TDL2R, CAN_TDH2R, CAN_RI0R, CAN_RDT0R, CAN_RDL0R, CAN_RDH0R, CAN_RI1R, CAN_RDT1R, CAN_RDL1R, CAN_RDH1R;
+    volatile uint32_t space_2[12];
+    volatile uint32_t CAN_FMR, CAN_FM1R;
+    volatile uint32_t space_3;
+    volatile uint32_t CAN_FS1R;
+    volatile uint32_t space_4;
+    volatile uint32_t CAN_FFA1R;
+    volatile uint32_t space_5;
+    volatile uint32_t CAN_FA1R;
+    volatile uint32_t space_6[8];
+    volatile uint32_t CAN_FnRx[28][2]; //[n][x]
 };
 
 #define CAN1 ((struct can_cntr*) 0x40006400)
@@ -75,6 +87,45 @@ union CAN_ESR {
     } fields;
     volatile uint32_t can_esr;
 };
+
+union CAN_TSR {
+    struct CAN_TSR_FIELDS {
+        volatile uint8_t rqcp0 : 1;
+        volatile uint8_t txok0 : 1;
+        volatile uint8_t alst0 : 1;
+        volatile uint8_t terr0 : 1;
+        volatile uint8_t reserved_1 : 3;
+        volatile uint8_t abrq0 : 1;
+        volatile uint8_t rqcp1 : 1;
+        volatile uint8_t tx0k1 : 1;
+        volatile uint8_t alst1 : 1;
+        volatile uint8_t terr1 : 1;
+        volatile uint8_t reserved_2 : 3;
+        volatile uint8_t abrq1 : 1;
+        volatile uint8_t rqcp2 : 1;
+        volatile uint8_t txok2 : 1;
+        volatile uint8_t alst2 : 1;
+        volatile uint8_t terr2 : 1;
+        volatile uint8_t reserved_3 : 3;
+        volatile uint8_t abrq2 : 1;
+        volatile uint8_t code : 2;
+        volatile uint8_t tme : 3;
+        volatile uint8_t low : 3;
+    }fields;
+    volatile uint32_t can_tsr;
+};
+
+union CAN_TI0R {
+    struct CAN_TI0R_FIELDS {
+        volatile uint8_t txrq : 1;
+        volatile uint8_t rtr : 1;
+        volatile uint8_t ide : 1;
+        volatile uint32_t exid : 18;
+        volatile uint16_t stid : 16;
+    }fields;
+    volatile uint32_t can_ti0r;
+};
+
 
 
 #endif

@@ -49,6 +49,8 @@ int main(void) {
       CAN_Send(0x01, data, 8);
       gpio_write(pin_blue_one, GPIO_TOGGLE);
     }
+
+    CAN1_RX0_IRQHandler();
     
   }
   return 0;

@@ -53,5 +53,5 @@ __attribute__((section(".vectors"))) void (*const tab[16 + 91])(void) = {
     0,                              // 17
     0,                              // 18
     0,                              // 19
-    0//CAN1_RX0_IRQHandler             // 20
+    0 //CAN1_RX0_IRQHandler             // 20
 };
