@@ -10,34 +10,48 @@
 #include "ss_delay.h"
 #include "ss_systick.h"
 #include "ss_timer.h"
+#include "ss_can.h"
 
 // USR_CONFIGS
 #include "systick_handles.h"
 #include "systick_isr.h"
+#include "pin_declarations.h"
 
 extern Systick_Handle handle1;
+extern Systick_Handle handle2;
 
+extern uint16_t pin_heartbeat;
+extern uint16_t pin_error;
+extern uint16_t pin_blue_one;
+extern uint16_t pin_blue_two;
+
+extern uint16_t can1_tx;
+extern uint16_t can1_rx;
 
 
 
 int main(void) {
-  uint16_t led = PIN('B', 15);
 
-  gpio_set_mode(led, GPIO_MODE_AF);
-  gpio_init_pwm(led, 159, 2000);
+
+
+
+  inti_pb_pins();
+
+  CAN_Init(can1_tx, can1_rx);
 
   systick_init(16000000/1000);
 
-  uint16_t pwm_val = 0;
+
+  uint8_t data[8] = {1, 2, 3, 4, 5, 6, 7};
 
   for (;;) {
     if (handle_timer(&handle1)) {
-      gpio_write(led, pwm_val);
-      pwm_val = (pwm_val > 2000) ? 0 : pwm_val + 50;
+      CAN_Send(0x01, data, 8);
+      gpio_write(pin_blue_one, GPIO_TOGGLE);
     }
     
-
   }
   return 0;
 }
+
 
