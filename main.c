@@ -34,6 +34,10 @@ int main(void) {
 
   inti_pb_pins();
 
+  uint16_t pa2 = PIN('A', 2);
+  gpio_set_mode(pa2, GPIO_MODE_AF);
+  gpio_init_pwm(pa2, 159, 2000);
+
   // 1MBAUD
   CAN_Init(can1_tx, can1_rx);
 
@@ -41,7 +45,11 @@ int main(void) {
 
   uint8_t data[8] = {1, 2, 3, 4, 5, 6, 7};
 
+  gpio_write(pa2, 1000);
+
   for (;;) {
+
+
     if (handle_timer(&handle1)) {
       CAN_Send(0x01, data, 8);
       gpio_write(pin_blue_one, GPIO_TOGGLE);
