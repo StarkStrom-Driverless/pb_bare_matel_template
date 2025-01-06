@@ -30,6 +30,9 @@ extern uint16_t can1_rx;
 
 
 
+
+
+
 int main(void) {
 
   inti_pb_pins();
@@ -55,9 +58,13 @@ int main(void) {
       gpio_write(pin_blue_one, GPIO_TOGGLE);
     }
 
-    CAN1_RX0_IRQHandler();
+    //CAN1_RX0_IRQHandler();
   }
   return 0;
+}
+
+void DefaultHandler(void) {
+    //gpio_write(pin_heartbeat, GPIO_TOGGLE);
 }
 
 

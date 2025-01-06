@@ -9,6 +9,7 @@
 #include "ss_rcc_def.h"
 #include "systick_handles.h"
 #include "ss_systick.h"
+#include "ss_nvic.h"
 
 extern Systick_Handle handle2;
 
@@ -114,9 +115,10 @@ void CAN_Init(uint16_t tx_pin, uint16_t rx_pin) {
     can_mcr->fields.inrq = 0;
     while(can_msr->fields.inak == 1);
 
+
     //Für später - Muss warscheinlich PRIO in NVIC gepackt noch werden
-    //CAN_IER |= (1 << 1); // FIFO 0 message pending interrupt
-    //NVIC_ISER0 |= (1 << 20); // Enable CAN1_RX0 interrupt in NVIC
+    CAN1->CAN_IER |= (1 << 1);
+    enable_nvic_interrupt(20);
 }
 
 void CAN_Send(uint32_t id, uint8_t *data, uint8_t len) {
@@ -138,6 +140,7 @@ void CAN_Send(uint32_t id, uint8_t *data, uint8_t len) {
 }
 
 void CAN1_RX0_IRQHandler(void) {
+    
     if (CAN1->CAN_RF0R & (0x3 << 0)) {
         uint32_t id = (CAN1->CAN_RI0R >> 21) & 0x7FF;
         uint8_t len = CAN1->CAN_RDT0R & 0xF;
