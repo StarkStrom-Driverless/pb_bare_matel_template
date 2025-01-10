@@ -2,13 +2,13 @@
 #include "ss_gpio_def.h"
 #include "ss_rcc_def.h"
 #include "ss_timer_def.h"
+#include "ss_pin.h"
 
 #ifndef _GPIO_H
 #define _GPIO_H
 
 enum {GPIO_OFF, GPIO_ON, GPIO_TOGGLE};
 
-enum { GPIO_MODE_INPUT, GPIO_MODE_OUTPUT, GPIO_MODE_AF, GPIO_MODE_ANALOG };
 
 static inline void gpio_set_mode(uint16_t pin, uint8_t mode) {
   RCC->AHB1ENR |= BIT(PINBANK(pin));
@@ -17,6 +17,14 @@ static inline void gpio_set_mode(uint16_t pin, uint8_t mode) {
   int n = PINNO(pin);
   gpio->MODER &= ~(3U << (n * 2));
   gpio->MODER |= (mode & 3U) << (n * 2);
+}
+
+int8_t gpio_set_pin_configs(struct PinConfig* pin_config) {
+  if (pin_config == 0) return -1;
+  for (int i = 0; i < pin_config->len; i++) {
+    gpio_set_mode(pin_config->pin_config[i].pin, pin_config->pin_config[i].function);
+  }
+  return 0;
 }
 
 static inline void gpio_init_pwm(uint16_t pin, uint16_t prescaler, uint16_t auto_reload) {

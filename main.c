@@ -32,7 +32,7 @@ extern uint16_t can2_rx;
 
 extern struct Fifo can_receive_fifos[2];
 
-
+void ErrorHandler(void);
 
 
 int main(void) {
@@ -43,9 +43,12 @@ int main(void) {
   gpio_set_mode(pa2, GPIO_MODE_AF);
   gpio_init_pwm(pa2, 159, 2000);
 
+  if (gpio_set_pin_configs(get_can_pins(0)) == -1) ErrorHandler();
+  if (gpio_set_pin_configs(get_can_pins(1)) == -1) ErrorHandler();
+
   // 1MBAUD
-  CAN_Init(can1_tx, can1_rx, CAN1);
-  CAN_Init(can2_tx, can2_rx, CAN2);
+  CAN_Init(get_can_pins(0), CAN1);
+  CAN_Init(get_can_pins(1), CAN2);
 
   systick_init(16000000/1000);
 
@@ -68,6 +71,12 @@ int main(void) {
 
   }
   return 0;
+}
+
+void ErrorHandler(void) {
+  for(;;) {
+    gpio_write(pin_error, GPIO_ON);
+  }
 }
 
 void DefaultHandler(void) {

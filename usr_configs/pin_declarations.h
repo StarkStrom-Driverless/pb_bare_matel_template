@@ -39,25 +39,6 @@ void inti_pb_pins(void) {
     gpio_write(pin_blue_one, GPIO_ON);
     gpio_write(pin_blue_two, GPIO_ON);
 
-    //CAN
-    can1_tx = PIN('B', 9);
-    can1_rx = PIN('B', 8);
-    can1_stb = PIN('B', 7);
-
-    can2_tx = PIN('B', 6);
-    can2_rx = PIN('B', 5);
-    can2_stb = PIN('B', 4);
-
-    gpio_set_mode(can1_rx, GPIO_MODE_AF);
-    gpio_set_mode(can1_tx, GPIO_MODE_AF);
-    gpio_set_mode(can1_stb, GPIO_MODE_OUTPUT);
-
-    gpio_set_mode(can2_rx, GPIO_MODE_AF);
-    gpio_set_mode(can2_tx, GPIO_MODE_AF);
-    gpio_set_mode(can2_stb, GPIO_MODE_OUTPUT);
-
-    gpio_write(can1_stb, GPIO_ON);
-    gpio_write(can2_stb, GPIO_ON);
 }
 
 #endif

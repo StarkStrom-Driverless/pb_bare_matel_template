@@ -17,9 +17,40 @@ extern Systick_Handle handle2;
 struct Fifo can_receive_fifos[2];
 
 
-void CAN_Init(uint16_t tx_pin, uint16_t rx_pin, struct can_cntr* can) {
-    //FÜR später
-    //SystemClock_Config();
+
+struct PinConfig pin_config_can2 = {
+    { {PIN('B', 6), GPIO_MODE_AF}, {PIN('B', 5), GPIO_MODE_AF}, {PIN('B', 4), GPIO_MODE_OUTPUT}},
+    3
+};
+
+struct PinConfig pin_config_can1 = {
+    { {PIN('B', 9), GPIO_MODE_AF}, {PIN('B', 8), GPIO_MODE_AF}, {PIN('B', 7), GPIO_MODE_OUTPUT}},
+    3
+};
+
+
+struct PinConfig* get_can_pins(uint8_t can_id) {
+    struct PinConfig* pin_config = 0;
+    switch (can_id)
+    {
+        case 0: pin_config = &pin_config_can1; break;
+        case 1: pin_config = &pin_config_can2; break;
+        default: break;
+    }
+    return pin_config;
+}
+
+
+
+
+void CAN_Init(struct PinConfig* pin_config, struct can_cntr* can) {
+
+    
+    uint16_t tx_pin = pin_config->pin_config[0].pin;
+    uint16_t rx_pin = pin_config->pin_config[1].pin;
+    uint16_t stb_pin = pin_config->pin_config[2].pin;
+
+    gpio_write(stb_pin, GPIO_ON);
 
     if (can == CAN1) {
         init_fifo(&can_receive_fifos[0]);
@@ -28,8 +59,6 @@ void CAN_Init(uint16_t tx_pin, uint16_t rx_pin, struct can_cntr* can) {
         init_fifo(&can_receive_fifos[1]);
         RCC->APB1ENR |= (1 << 26);
     }
-
-    
 
     
 
@@ -68,9 +97,6 @@ void CAN_Init(uint16_t tx_pin, uint16_t rx_pin, struct can_cntr* can) {
     CAN1->CAN_FA1R |= (1 << filter_id);
     CAN1->CAN_FMR &= ~(uint32_t)(1 << 0);
 
-
-
-
     // Das geht
     can->CAN_BTR |= 0;
 
@@ -80,18 +106,8 @@ void CAN_Init(uint16_t tx_pin, uint16_t rx_pin, struct can_cntr* can) {
     can->CAN_BTR &= (uint32_t)~(0x7 << 20);
     can->CAN_BTR |= (4 << 20);
 
-
-    //Das nicht
-    //union CAN_BTR* can_btr = ((union CAN_BTR*)(&CAN1->CAN_BTR)); -- Definiert in ss_can_def.h
-
-    //can_btr->fields.brp = 5;
-    //can_btr->fields.ts1 = 10;
-    //can_btr->fields.ts2 = 5;
-    //can_btr->fields.sjw = 1;
-
     can_mcr->fields.inrq = 0;
     while(can_msr->fields.inak == 1);
-
 
     //Für später - Muss warscheinlich PRIO in NVIC gepackt noch werden
     can->CAN_IER |= (1 << 1);
@@ -104,7 +120,6 @@ void CAN_Init(uint16_t tx_pin, uint16_t rx_pin, struct can_cntr* can) {
 
 }
 
-//void CAN_Send(uint32_t id, uint8_t *data, uint8_t len, struct can_cntr* can) {
 void can_send(struct CanFrame* can_frame, struct can_cntr* can){
 
     while( ((union CAN_TSR*)(&can->CAN_TSR))->fields.tme == 0 ) {
@@ -151,5 +166,7 @@ void CAN2_RX0_IRQHandler(void) {
         CAN2->CAN_RF0R |= (1 << 5);
     }
 }
+
+
 
 #endif 
