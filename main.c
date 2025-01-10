@@ -27,8 +27,10 @@ extern uint16_t pin_blue_two;
 
 extern uint16_t can1_tx;
 extern uint16_t can1_rx;
+extern uint16_t can2_tx;
+extern uint16_t can2_rx;
 
-
+extern struct Fifo can_receive_fifos[2];
 
 
 
@@ -42,11 +44,11 @@ int main(void) {
   gpio_init_pwm(pa2, 159, 2000);
 
   // 1MBAUD
-  CAN_Init(can1_tx, can1_rx);
+  CAN_Init(can1_tx, can1_rx, CAN1);
+  CAN_Init(can2_tx, can2_rx, CAN2);
 
   systick_init(16000000/1000);
 
-  uint8_t data[8] = {1, 2, 3, 4, 5, 6, 7};
 
   gpio_write(pa2, 1000);
 
@@ -54,17 +56,22 @@ int main(void) {
 
 
     if (handle_timer(&handle1)) {
-      CAN_Send(0x01, data, 8);
-      gpio_write(pin_blue_one, GPIO_TOGGLE);
+
+      if(!is_fifo_empty(&can_receive_fifos[0])) {
+        struct CanFrame can_frame;
+        fifo_remove_can_frame(&can_receive_fifos[0], &can_frame);
+        can_send(&can_frame, CAN1);
+        gpio_write(pin_blue_one, GPIO_TOGGLE);
+      }
     }
 
-    //CAN1_RX0_IRQHandler();
+
   }
   return 0;
 }
 
 void DefaultHandler(void) {
-    //gpio_write(pin_heartbeat, GPIO_TOGGLE);
+    gpio_write(pin_heartbeat, GPIO_TOGGLE);
 }
 
 

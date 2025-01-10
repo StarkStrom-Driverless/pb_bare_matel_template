@@ -20,7 +20,7 @@ struct can_cntr {
 };
 
 #define CAN1 ((struct can_cntr*) 0x40006400)
-#define CAN2 ((struct can_cntr*) 0x40006800);
+#define CAN2 ((struct can_cntr*) 0x40006800)
 
 union CAN_MCR {
     struct CAN_MCR_FIELDS {

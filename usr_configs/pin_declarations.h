@@ -18,6 +18,10 @@ uint16_t can1_tx;
 uint16_t can1_rx;
 uint16_t can1_stb;
 
+uint16_t can2_tx;
+uint16_t can2_rx;
+uint16_t can2_stb;
+
 void inti_pb_pins(void) {
     // LEDS
     pin_heartbeat = PIN('C', 1);
@@ -40,11 +44,20 @@ void inti_pb_pins(void) {
     can1_rx = PIN('B', 8);
     can1_stb = PIN('B', 7);
 
+    can2_tx = PIN('B', 6);
+    can2_rx = PIN('B', 5);
+    can2_stb = PIN('B', 4);
+
     gpio_set_mode(can1_rx, GPIO_MODE_AF);
     gpio_set_mode(can1_tx, GPIO_MODE_AF);
     gpio_set_mode(can1_stb, GPIO_MODE_OUTPUT);
 
+    gpio_set_mode(can2_rx, GPIO_MODE_AF);
+    gpio_set_mode(can2_tx, GPIO_MODE_AF);
+    gpio_set_mode(can2_stb, GPIO_MODE_OUTPUT);
+
     gpio_write(can1_stb, GPIO_ON);
+    gpio_write(can2_stb, GPIO_ON);
 }
 
 #endif
