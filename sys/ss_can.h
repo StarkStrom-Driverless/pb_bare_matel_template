@@ -33,8 +33,8 @@ struct PinConfig* get_can_pins(uint8_t can_id) {
     struct PinConfig* pin_config = 0;
     switch (can_id)
     {
-        case 0: pin_config = &pin_config_can1; break;
-        case 1: pin_config = &pin_config_can2; break;
+        case 1: pin_config = &pin_config_can1; break;
+        case 2: pin_config = &pin_config_can2; break;
         default: break;
     }
     return pin_config;

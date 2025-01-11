@@ -11,6 +11,7 @@
 #include "ss_systick.h"
 #include "ss_timer.h"
 #include "ss_can.h"
+#include "ss_spi.h"
 
 // USR_CONFIGS
 #include "systick_handles.h"
@@ -43,12 +44,17 @@ int main(void) {
   gpio_set_mode(pa2, GPIO_MODE_AF);
   gpio_init_pwm(pa2, 159, 2000);
 
-  if (gpio_set_pin_configs(get_can_pins(0)) == -1) ErrorHandler();
   if (gpio_set_pin_configs(get_can_pins(1)) == -1) ErrorHandler();
+  if (gpio_set_pin_configs(get_can_pins(2)) == -1) ErrorHandler();
+
+  if (gpio_set_pin_configs(get_spi_pins(1)) ==  -1) ErrorHandler();
+
 
   // 1MBAUD
-  CAN_Init(get_can_pins(0), CAN1);
-  CAN_Init(get_can_pins(1), CAN2);
+  CAN_Init(get_can_pins(1), CAN1);
+  CAN_Init(get_can_pins(2), CAN2);
+
+  SPI_Init(get_spi_pins(1), SPI1);
 
   systick_init(16000000/1000);
 
