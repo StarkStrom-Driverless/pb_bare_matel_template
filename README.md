@@ -85,7 +85,7 @@ void SysTick_Handler(void) {
 int main(void) {
   uint16_t led = PIN('A', 2);
   
-  Usable GPIO_set_mode(led, Usable GPIO_MODE_OUTPUT);
+  GPIO_set_mode(led, Usable GPIO_MODE_OUTPUT);
 
 
   systick_init(16000000/100);
@@ -94,12 +94,70 @@ int main(void) {
 
   for (;;) {
     if (handle_timer(&handle1)) {
-      Usable GPIO_write(led, Usable GPIO_TOGGLE);
+      GPIO_write(led, Usable GPIO_TOGGLE);
     }
   }
   return 0;
 }
 ```
+
+## CAN
+For using CAN follow the following pattern.
+- At first you need a main 
+
+```c
+#include "ss_makros.h"
+#include "ss_gpio.h"
+#include "ss_systick.h"
+#include "ss_can.h"
+
+extern struct Fifo can_receive_fifos[2];
+
+int main(void) {
+  inti_pb_pins();
+
+  if (gpio_set_pin_configs(get_can_pins(1)) == -1) ErrorHandler();
+
+  CAN_Init(get_can_pins(1), CAN1);
+
+  systick_init(16000000/1000);
+
+  for (;;) {
+
+    if (handle_timer(&handle1)) {
+      if(!is_fifo_empty(&can_receive_fifos[0])) {
+        struct CanFrame can_frame;
+        fifo_remove_can_frame(&can_receive_fifos[0], &can_frame);
+        can_send(&can_frame, CAN1);
+        gpio_write(pin_blue_one, GPIO_TOGGLE);
+      }
+    }
+
+  }
+  return 0;
+}
+
+```
+
+- define `struct Fifo can_receive_fifos[2];` over the main function. This is used to handle incomming messages in a fifo buffer
+- init the CAN related pins `if (gpio_set_pin_configs(get_can_pins(1)) == -1) ErrorHandler();`. `gpio_set_pin_configs()` takes a list of pins with a pattern to configure them. These list comes from `get_can_pins()`, which is a function which returns a predevined definition for CAN1 and CAN2.
+- Init the CAN-Controller it self with `CAN_Init(get_can_pins(1), CAN1);`
+- In the wile loop you have to check with `is_fifo_empty()` if the fifo contains received can-frames. 
+- If a CAN-Frame is received, you can pop these frame with `fifo_remove_can_frame()`. 
+- With the function `can_send()` you can send a frame
+
+A CAN Frame is defined as the following struct 
+```c
+struct CanFrame {
+    uint32_t id;
+    uint8_t flags; //rtr, eff, err
+    uint8_t dlc;
+    uint8_t data[8];
+};
+```
+The functions `fifo_remove_can_frame()` and `can_send()` are expecting it.
+
+
 
 # PIN capabilities
 ## PORTA

@@ -26,10 +26,6 @@ extern uint16_t pin_error;
 extern uint16_t pin_blue_one;
 extern uint16_t pin_blue_two;
 
-extern uint16_t can1_tx;
-extern uint16_t can1_rx;
-extern uint16_t can2_tx;
-extern uint16_t can2_rx;
 
 extern struct Fifo can_receive_fifos[2];
 
