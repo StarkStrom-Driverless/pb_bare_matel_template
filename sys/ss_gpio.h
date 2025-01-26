@@ -19,11 +19,27 @@ static inline void gpio_set_mode(uint16_t pin, uint8_t mode) {
   gpio->MODER |= (mode & 3U) << (n * 2);
 }
 
+static inline void gpio_set_af(uint16_t pin, uint8_t af_num) {
+  struct gpio *gpio = GPIO(PINBANK(pin));  // GPIO bank
+  int n = PINNO(pin);                      // Pin number
+  gpio->AFR[n >> 3] &= ~(15UL << ((n & 7) * 4));
+  gpio->AFR[n >> 3] |= ((uint32_t) af_num) << ((n & 7) * 4);
+}
+
+
 int8_t gpio_set_pin_configs(struct PinConfig* pin_config) {
+
   if (pin_config == 0) return -1;
   for (int i = 0; i < pin_config->len; i++) {
-    gpio_set_mode(pin_config->pin_config[i].pin, pin_config->pin_config[i].function);
+    uint16_t pin = pin_config->pin_config[i].pin;
+    gpio_set_mode(pin, pin_config->pin_config[i].function);
+    if (pin_config->pin_config[i].function != GPIO_MODE_AF) continue;
+    gpio_set_af(pin, pin_config->pin_config[i].af_mode);
+
   }
+
+  *pin_config->rcc |= BIT(pin_config->pos);
+
   return 0;
 }
 

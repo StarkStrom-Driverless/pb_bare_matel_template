@@ -12,6 +12,7 @@
 #include "ss_timer.h"
 #include "ss_can.h"
 #include "ss_spi.h"
+#include "ss_uart.h"
 
 // USR_CONFIGS
 #include "systick_handles.h"
@@ -31,43 +32,53 @@ extern struct Fifo can_receive_fifos[2];
 
 void ErrorHandler(void);
 
+static inline void spin(volatile uint32_t count) {
+  while (count--) asm("nop");
+}
+
+
 
 int main(void) {
 
   inti_pb_pins();
 
-  uint16_t pa2 = PIN('A', 2);
-  gpio_set_mode(pa2, GPIO_MODE_AF);
-  gpio_init_pwm(pa2, 159, 2000);
+  //uint16_t pa2 = PIN('A', 2);
+  //gpio_set_mode(pa2, GPIO_MODE_AF);
+  //gpio_init_pwm(pa2, 159, 2000);
 
-  if (gpio_set_pin_configs(get_can_pins(1)) == -1) ErrorHandler();
-  if (gpio_set_pin_configs(get_can_pins(2)) == -1) ErrorHandler();
+  //if (gpio_set_pin_configs(get_spi_pins(1)) ==  -1) ErrorHandler();
+  //SPI_Init(get_spi_pins(1), SPI1);
 
-  if (gpio_set_pin_configs(get_spi_pins(1)) ==  -1) ErrorHandler();
+  if(CAN_Init(1, 1000000) == -1) ErrorHandler();
+  if(CAN_Init(2, 1000000) == -1) ErrorHandler();
 
 
-  // 1MBAUD
-  CAN_Init(get_can_pins(1), CAN1);
-  CAN_Init(get_can_pins(2), CAN2);
-
-  SPI_Init(get_spi_pins(1), SPI1);
 
   systick_init(16000000/1000);
 
+  if (uart_init(1, 115200) == -1) ErrorHandler();
 
-  gpio_write(pa2, 1000);
+  //gpio_write(pa2, 1000);
+
+  gpio_write(pin_heartbeat, GPIO_OFF);
+  
 
   for (;;) {
 
 
     if (handle_timer(&handle1)) {
-
+      
       if(!is_fifo_empty(&can_receive_fifos[0])) {
         struct CanFrame can_frame;
         fifo_remove_can_frame(&can_receive_fifos[0], &can_frame);
         can_send(&can_frame, CAN1);
         gpio_write(pin_blue_one, GPIO_TOGGLE);
       }
+
+
+      uart_write_buf(1, "TestHallo \n\r", 12);
+
+      gpio_write(pin_heartbeat, GPIO_TOGGLE);
     }
 
 
@@ -77,7 +88,8 @@ int main(void) {
 
 void ErrorHandler(void) {
   for(;;) {
-    gpio_write(pin_error, GPIO_ON);
+    gpio_write(pin_error, GPIO_TOGGLE);
+    spin(1000000);
   }
 }
 

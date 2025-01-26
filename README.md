@@ -5,18 +5,18 @@ To set a pin to high or low just do the following
 ```c
 int main(void) {
   uint16_t PA2 = PIN('A', 2);
-  Usable GPIO_set_mode(PA2, Usable GPIO_MODE_OUTPUT);
+   GPIO_set_mode(PA2,  GPIO_MODE_OUTPUT);
 
   for (;;) {
-      Usable GPIO_write(PA2, Usable GPIO_ON); //Usable GPIO_ON - Usable GPIO_OFF - Usable GPIO_TOGGLE
+       GPIO_write(PA2,  GPIO_ON); // GPIO_ON -  GPIO_OFF -  GPIO_TOGGLE
   }
   return 0;
 }
 
 ```
 - create a unique id for the pin 2 on port a
-- set the mode of the pin to Usable GPIO_MODE_OUTPUT
-- Use the Usable GPIO_write function to set the output value
+- set the mode of the pin to  GPIO_MODE_OUTPUT
+- Use the  GPIO_write function to set the output value
 
 
 ## PWM
@@ -24,11 +24,11 @@ To use the pwm function of a pin just do the following
 ```c
 int main(void) {
   uint16_t PA2 = PIN('A', 2);
-  Usable GPIO_set_mode(PA2, Usable GPIO_MODE_AF);
-  Usable GPIO_init_pwm(PA2, 159, 2000);
+   GPIO_set_mode(PA2,  GPIO_MODE_AF);
+   GPIO_init_pwm(PA2, 159, 2000);
 
   for (;;) {
-      Usable GPIO_write(PA2, 1000);
+       GPIO_write(PA2, 1000);
   }
   return 0;
 }
@@ -39,7 +39,7 @@ int main(void) {
 - initialize the pin to pwm
     - Set the prescaler for the timer peripheral 
     - Set the auto reload value
-- Use the Usable GPIO_write function to set the capture compare register. 
+- Use the  GPIO_write function to set the capture compare register. 
   This function is also used to set high or low in output mode. 
   It recognizes if the unique id is set to pwm or to output mode.
 - The capture compare value has to be lower than the auto reload value
@@ -85,7 +85,7 @@ void SysTick_Handler(void) {
 int main(void) {
   uint16_t led = PIN('A', 2);
   
-  GPIO_set_mode(led, Usable GPIO_MODE_OUTPUT);
+  GPIO_set_mode(led,  GPIO_MODE_OUTPUT);
 
 
   systick_init(16000000/100);
@@ -94,7 +94,7 @@ int main(void) {
 
   for (;;) {
     if (handle_timer(&handle1)) {
-      GPIO_write(led, Usable GPIO_TOGGLE);
+      GPIO_write(led,  GPIO_TOGGLE);
     }
   }
   return 0;
@@ -161,7 +161,7 @@ The functions `fifo_remove_can_frame()` and `can_send()` are expecting it.
 
 # PIN capabilities
 ## PORTA
-|PIN|Usable GPIO|PWM|CAN|SPI1|SPI2|SPI3
+|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3
 |-|-|-|-|-|-|-|
 |PA0|True|True|||||
 |PA1|True|True|||||
@@ -181,7 +181,7 @@ The functions `fifo_remove_can_frame()` and `can_send()` are expecting it.
 |PA15|True|True||SPI1_NSS||SPI3_NSS|
 
 ## PORTB
-|PIN|Usable GPIO|PWM|CAN|SPI1|SPI2|SPI3
+|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3
 |-|-|-|-|-|-|-|
 |PB0|True|True|||||
 |PB1|True|True|||||
@@ -201,7 +201,7 @@ The functions `fifo_remove_can_frame()` and `can_send()` are expecting it.
 |PB15|True|True|||SPI2_MOSI||
 
 ## PORTC
-|PIN|Usable GPIO|PWM|CAN|SPI1|SPI2|SPI3
+|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3
 |-|-|-|-|-|-|-|
 |PC0|||||||
 |PC1|||||||

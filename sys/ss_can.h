@@ -18,15 +18,7 @@ struct Fifo can_receive_fifos[2];
 
 
 
-struct PinConfig pin_config_can2 = {
-    { {PIN('B', 6), GPIO_MODE_AF}, {PIN('B', 5), GPIO_MODE_AF}, {PIN('B', 4), GPIO_MODE_OUTPUT}},
-    3
-};
 
-struct PinConfig pin_config_can1 = {
-    { {PIN('B', 9), GPIO_MODE_AF}, {PIN('B', 8), GPIO_MODE_AF}, {PIN('B', 7), GPIO_MODE_OUTPUT}},
-    3
-};
 
 
 struct PinConfig* get_can_pins(uint8_t can_id) {
@@ -41,37 +33,28 @@ struct PinConfig* get_can_pins(uint8_t can_id) {
 }
 
 
-
-
-void CAN_Init(struct PinConfig* pin_config, struct can_cntr* can) {
-
-    
-    uint16_t tx_pin = pin_config->pin_config[0].pin;
-    uint16_t rx_pin = pin_config->pin_config[1].pin;
-    uint16_t stb_pin = pin_config->pin_config[2].pin;
-
-    gpio_write(stb_pin, GPIO_ON);
-
-    if (can == CAN1) {
-        init_fifo(&can_receive_fifos[0]);
-        RCC->APB1ENR |= (1 << 25);
-    } else {
-        init_fifo(&can_receive_fifos[1]);
-        RCC->APB1ENR |= (1 << 26);
+struct can_cntr* get_can_ptr(uint8_t can_id) {
+    struct can_cntr* can_ptr = 0;
+    switch (can_id)
+    {
+        case 1: can_ptr = CAN1; break;
+        case 2: can_ptr = CAN2; break;
+        default: break;
     }
+    return can_ptr;
+}
 
-    
+int8_t CAN_Init(uint8_t can_id, uint32_t baud) {
+    struct PinConfig *pin_config = get_can_pins(can_id);
+    struct can_cntr* can = get_can_ptr(can_id);
+    if(gpio_set_pin_configs(pin_config) == -1) return -1;
+    gpio_write(pin_config->pin_config[2].pin, GPIO_ON);
 
-    volatile uint32_t* afr = (PINNO(tx_pin) <= 7) ? &GPIO(PINBANK(tx_pin))->AFR[0] : &GPIO(PINBANK(tx_pin))->AFR[1]; 
-    *afr |= (9 << 4 * (PINNO(tx_pin) - ((PINNO(tx_pin) <= 7) ? 0 : 8)));
-    afr = (PINNO(rx_pin) <= 7) ? &GPIO(PINBANK(rx_pin))->AFR[0] : &GPIO(PINBANK(rx_pin))->AFR[1]; 
-    *afr |= (9 << 4 * (PINNO(rx_pin) - ((PINNO(rx_pin) <= 7) ? 0 : 8)));
-
-    GPIO(PINBANK(tx_pin))->OSPEEDR = (uint32_t)((1 << PINNO(tx_pin)) | (1 << PINNO(rx_pin)));
-
+    (void)baud;
 
 
-    GPIO(PINBANK(rx_pin))->OSPEEDR |= (uint32_t)((1 << PINNO(tx_pin)) | (1 << PINNO(rx_pin)));
+    GPIO(PINBANK(pin_config->pin_config[0].pin))->OSPEEDR = (uint32_t)((1 << PINNO(pin_config->pin_config[0].pin)) | (1 << PINNO(pin_config->pin_config[0].pin)));
+    GPIO(PINBANK(pin_config->pin_config[1].pin))->OSPEEDR = (uint32_t)((1 << PINNO(pin_config->pin_config[1].pin)) | (1 << PINNO(pin_config->pin_config[1].pin)));
 
 
     union CAN_MCR* can_mcr = ((union CAN_MCR*)(&can->CAN_MCR));
@@ -117,7 +100,7 @@ void CAN_Init(struct PinConfig* pin_config, struct can_cntr* can) {
     } else {
         enable_nvic_interrupt(64);
     }
-
+    return 0;
 }
 
 void can_send(struct CanFrame* can_frame, struct can_cntr* can){

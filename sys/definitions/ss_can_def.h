@@ -1,4 +1,5 @@
 #include <inttypes.h>
+#include "ss_pin.h"
 
 #ifndef _SS_CAN_DEF_H_
 #define _SS_CAN_DEF_H_
@@ -126,6 +127,18 @@ union CAN_TI0R {
     volatile uint32_t can_ti0r;
 };
 
+struct PinConfig pin_config_can2 = {
+    { {PIN('B', 6), GPIO_MODE_AF, 9}, {PIN('B', 5), GPIO_MODE_AF, 9}, {PIN('B', 4), GPIO_MODE_OUTPUT, 0}},
+    3,
+    (volatile uint32_t*)&RCC->APB1ENR,
+    26
+};
 
+struct PinConfig pin_config_can1 = {
+    { {PIN('B', 9), GPIO_MODE_AF, 9}, {PIN('B', 8), GPIO_MODE_AF, 9}, {PIN('B', 7), GPIO_MODE_OUTPUT, 9}},
+    3,
+    (volatile uint32_t*)&RCC->APB1ENR,
+    25
+};
 
 #endif
