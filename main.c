@@ -46,8 +46,7 @@ int main(void) {
   //gpio_set_mode(pa2, GPIO_MODE_AF);
   //gpio_init_pwm(pa2, 159, 2000);
 
-  //if (gpio_set_pin_configs(get_spi_pins(1)) ==  -1) ErrorHandler();
-  //SPI_Init(get_spi_pins(1), SPI1);
+  SPI_Init(1, 1000000);
 
   if(CAN_Init(1, 1000000) == -1) ErrorHandler();
   if(CAN_Init(2, 1000000) == -1) ErrorHandler();
@@ -71,7 +70,7 @@ int main(void) {
       if(!is_fifo_empty(&can_receive_fifos[0])) {
         struct CanFrame can_frame;
         fifo_remove_can_frame(&can_receive_fifos[0], &can_frame);
-        can_send(&can_frame, CAN1);
+        can_send(&can_frame, 1);
         gpio_write(pin_blue_one, GPIO_TOGGLE);
       }
 

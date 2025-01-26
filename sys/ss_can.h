@@ -103,7 +103,8 @@ int8_t CAN_Init(uint8_t can_id, uint32_t baud) {
     return 0;
 }
 
-void can_send(struct CanFrame* can_frame, struct can_cntr* can){
+void can_send(struct CanFrame* can_frame, uint8_t can_id){
+    struct can_cntr* can = get_can_ptr(can_id);
 
     while( ((union CAN_TSR*)(&can->CAN_TSR))->fields.tme == 0 ) {
             if (handle_timer(&handle2)) {

@@ -116,9 +116,7 @@ extern struct Fifo can_receive_fifos[2];
 int main(void) {
   inti_pb_pins();
 
-  if (gpio_set_pin_configs(get_can_pins(1)) == -1) ErrorHandler();
-
-  CAN_Init(get_can_pins(1), CAN1);
+  CAN_Init(1, 1000000);
 
   systick_init(16000000/1000);
 
@@ -128,7 +126,7 @@ int main(void) {
       if(!is_fifo_empty(&can_receive_fifos[0])) {
         struct CanFrame can_frame;
         fifo_remove_can_frame(&can_receive_fifos[0], &can_frame);
-        can_send(&can_frame, CAN1);
+        can_send(&can_frame, 1);
         gpio_write(pin_blue_one, GPIO_TOGGLE);
       }
     }
@@ -140,8 +138,8 @@ int main(void) {
 ```
 
 - define `struct Fifo can_receive_fifos[2];` over the main function. This is used to handle incomming messages in a fifo buffer
-- init the CAN related pins `if (gpio_set_pin_configs(get_can_pins(1)) == -1) ErrorHandler();`. `gpio_set_pin_configs()` takes a list of pins with a pattern to configure them. These list comes from `get_can_pins()`, which is a function which returns a predevined definition for CAN1 and CAN2.
-- Init the CAN-Controller it self with `CAN_Init(get_can_pins(1), CAN1);`
+- Init the CAN-Controller it self with `CAN_Init(<can_interface>, <baudrate>);`
+  - Not every baudrate is possible. At the moment only 1000000 is supported
 - In the wile loop you have to check with `is_fifo_empty()` if the fifo contains received can-frames. 
 - If a CAN-Frame is received, you can pop these frame with `fifo_remove_can_frame()`. 
 - With the function `can_send()` you can send a frame
@@ -157,6 +155,69 @@ struct CanFrame {
 ```
 The functions `fifo_remove_can_frame()` and `can_send()` are expecting it.
 
+## UART
+
+```c
+#include "ss_makros.h"
+#include "ss_gpio.h"
+#include "ss_systick.h"
+#include "ss_uart.h"
+
+extern struct Fifo can_receive_fifos[2];
+
+int main(void) {
+  inti_pb_pins();
+
+  if (uart_init(1, 115200) == -1) ErrorHandler();
+
+  systick_init(16000000/1000);
+
+  for (;;) {
+
+    if (handle_timer(&handle1)) {
+      uart_write_buf(1, "TestHallo \n\r", 12);
+    }
+
+  }
+  return 0;
+}
+
+```
+
+- with uart_init(<uart_interface>, baudrate) you can init a uart-interface
+- with uart_write_buf(<uart_interface>, <buffer>, <buffer_len>), you can send a uart_message
+
+## SPI
+
+```c
+#include "ss_makros.h"
+#include "ss_gpio.h"
+#include "ss_systick.h"
+#include "ss_uart.h"
+
+extern struct Fifo can_receive_fifos[2];
+
+int main(void) {
+  inti_pb_pins();
+
+  if (SPI_Init(1, 1000000) == -1) ErrorHandler();
+
+  systick_init(16000000/1000);
+
+  for (;;) {
+
+    if (handle_timer(&handle1)) {
+      uint8_t data = spi_exchange_data(0x01, 1);
+    }
+
+  }
+  return 0;
+}
+
+```
+
+- with SPI_Init(<spi_interface>, <baudrate>) you can init a spi-interface 
+- with spi_exchange_data(<data>, <spi_interface>), you can exchange a spi message
 
 
 # PIN capabilities

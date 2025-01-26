@@ -1,4 +1,5 @@
 #include <inttypes.h>
+#include "ss_pin.h"
 
 #ifndef _SS_SPI_DEF_H_
 #define _SS_SPI_DEF_H_
@@ -48,6 +49,26 @@ union SPI_SR {
     volatile uint32_t spi_sr;
 };
 
+// MISO - MOSI - SCK - NSS
+struct PinConfig pin_config_spi1 = {
+    {{PIN('A', 6), GPIO_MODE_AF, 5}, {PIN('A', 7), GPIO_MODE_AF, 5}, {PIN('A', 5), GPIO_MODE_AF, 5}, {PIN('A', 4), GPIO_MODE_AF, 5} },
+    4, 
+    (volatile uint32_t*)&RCC->APB2ENR,
+    12
+};
 
+struct PinConfig pin_config_spi2 = {
+    {{PIN('B', 14), GPIO_MODE_AF, 5}, {PIN('B', 15), GPIO_MODE_AF, 5}, {PIN('B', 13), GPIO_MODE_AF, 5}, {PIN('B', 12), GPIO_MODE_AF, 5} },
+    4,
+    (volatile uint32_t*)&RCC->APB1ENR,
+    14
+};
+
+struct PinConfig pin_config_spi3 = {
+    {{PIN('C', 11), GPIO_MODE_AF, 6}, {PIN('C', 12), GPIO_MODE_AF, 6}, {PIN('C', 10), GPIO_MODE_AF, 6}, {PIN('A', 15), GPIO_MODE_AF, 6} },
+    4,
+    (volatile uint32_t*)&RCC->APB1ENR,
+    15
+};
 
 #endif
