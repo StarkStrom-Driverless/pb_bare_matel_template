@@ -222,62 +222,62 @@ int main(void) {
 
 # PIN capabilities
 ## PORTA
-|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3
-|-|-|-|-|-|-|-|
-|PA0|True|True|||||
-|PA1|True|True|||||
-|PA2|True|True|||||
-|PA3|True|True|||||
-|PA4|True|||SPI1_NSS||SPI3_NSS|
-|PA5|True|True||SPI1_SCK|||
-|PA6|True|True||SPI1_MISO|||
-|PA7|True|True||SPI1_MOSI|||
-|PA8|True|True|||||
-|PA9|True|True|||||
-|PA10|True|True|||||
-|PA11|True|True|||||
-|PA12|True||||||
-|PA13|||||||
-|PA14|||||||
-|PA15|True|True||SPI1_NSS||SPI3_NSS|
+|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3|UART
+|-|-|-|-|-|-|-|-|
+|PA0|True|True||||||
+|PA1|True|True||||||
+|PA2|True|True|||||UART2_Tx|
+|PA3|True|True|||||UART2_Rx|
+|PA4|True|||SPI1_NSS||SPI3_NSS||
+|PA5|True|True||SPI1_SCK||||
+|PA6|True|True||SPI1_MISO||||
+|PA7|True|True||SPI1_MOSI||||
+|PA8|True|True||||||
+|PA9|True|True|||||UART1_Rx|
+|PA10|True|True|||||UART1_Tx|
+|PA11|True|True||||||
+|PA12|True|||||||
+|PA13||||||||
+|PA14||||||||
+|PA15|True|True||SPI1_NSS||SPI3_NSS||
 
 ## PORTB
-|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3
-|-|-|-|-|-|-|-|
-|PB0|True|True|||||
-|PB1|True|True|||||
-|PB2|||||||
-|PB3||||SPI1_SCK||SPI3_SCK|
-|PB4|||STB2|SPI1_MISO||SPI3_MISO|
-|PB5|||RX2|SPI1_MOSI||SPI3_MOSI|
-|PB6|||TX2||||
-|PB7|||STB1||||
-|PB8|||RX1||||
-|PB9|||TX1||SPI2_NSS||
-|PB10|True|True|||SPI2_SCK||
-|PB11|True|True|||||
-|PB12|True||||SPI2_NSS||
-|PB13|True||||SPI2_SCK||
-|PB14|True|True|||SPI2_MISO||
-|PB15|True|True|||SPI2_MOSI||
+|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3|UART
+|-|-|-|-|-|-|-|-|
+|PB0|True|True||||||
+|PB1|True|True||||||
+|PB2||||||||
+|PB3||||SPI1_SCK||SPI3_SCK||
+|PB4|||STB2|SPI1_MISO||SPI3_MISO||
+|PB5|||RX2|SPI1_MOSI||SPI3_MOSI||
+|PB6|||TX2|||||
+|PB7|||STB1|||||
+|PB8|||RX1|||||
+|PB9|||TX1||SPI2_NSS|||
+|PB10|True|True|||SPI2_SCK||UART3_Rx - UART4_Rx|
+|PB11|True|True|||||UART3_Tx|
+|PB12|True||||SPI2_NSS|||
+|PB13|True||||SPI2_SCK|||
+|PB14|True|True|||SPI2_MISO|||
+|PB15|True|True|||SPI2_MOSI|||
 
 ## PORTC
-|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3
-|-|-|-|-|-|-|-|
-|PC0|||||||
-|PC1|||||||
-|PC2|True||||||
-|PC3|True||||||
-|PC4|||||||
-|PC5|||||||
-|PC6|True|True|||||
-|PC7|True|True|||||
-|PC8|True|True|||||
-|PC9|True|True|||||
-|PC10|True|||||SPI3_SCK|
-|PC11|True|||||SPI3_MISO|
-|PC12|True|||||SPI3_MOSI|
-|PC13|True||||||
-|PC14|True||||||
-|PC15|True||||||
+|PIN| GPIO|PWM|CAN|SPI1|SPI2|SPI3|UART
+|-|-|-|-|-|-|-|-|
+|PC0||||||||
+|PC1||||||||
+|PC2|True|||||||
+|PC3|True|||||||
+|PC4||||||||
+|PC5||||||||
+|PC6|True|True|||||UART6_Rx|
+|PC7|True|True|||||UART6_Rx|
+|PC8|True|True||||||
+|PC9|True|True||||||
+|PC10|True|||||SPI3_SCK||
+|PC11|True|||||SPI3_MISO|UART4_Tx|
+|PC12|True|||||SPI3_MOSI||
+|PC13|True|||||||
+|PC14|True|||||||
+|PC15|True|||||||
 
