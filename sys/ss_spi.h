@@ -30,9 +30,9 @@ struct spi* get_spi_ptr(uint8_t spi_id) {
     return spi_ptr;
 }
 
-int16_t get_spi_br(uint8_t bitrate) {
-    int spix_clk = 16000000;
-    int br_value = spix_clk / bitrate;
+int16_t get_spi_br(uint32_t bitrate) {
+    uint32_t spix_clk = 16000000;
+    uint32_t br_value = spix_clk / bitrate;
     if (br_value < 2 || br_value > 256) {
         return -1;  // Ungültige Bitrate
     }
@@ -59,7 +59,7 @@ int16_t get_spi_br(uint8_t bitrate) {
     }
 }
 
-int8_t SPI_Init(uint8_t spi_id, uint8_t bitrate) {
+int8_t SPI_Init(uint8_t spi_id, uint32_t bitrate) {
     (void) bitrate;
 
     if (gpio_set_pin_configs(get_spi_pins(spi_id)) == -1) return -1;
