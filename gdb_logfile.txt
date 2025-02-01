@@ -164,3 +164,333 @@ target halted due to debug-request, current mode: Thread
 xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
 
 Breakpoint 1, main () at main.c:43
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+KeyboardInterrupt: Quit
+tools/gdbinit:54: Error in sourced command file:
+Error while executing Python code.
+main () at main.c:68
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ee in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+main () at main.c:68
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x08000890 in main at main.c:43
+	breakpoint already hit 1 time
+No breakpoints or watchpoints.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002de in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+No breakpoints or watchpoints.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+main () at main.c:68
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Undefined command: "C-x".  Try "help".
+0x080008fe in main () at main.c:68
+"finish" not meaningful in the outermost frame.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080008fa in main () at main.c:68
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002d8 in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Run till exit from #0  0x080002d8 in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+0x080008fe in main () at main.c:68
+Value returned is $1 = 0x0
+Undefined command: "pin_blue_one".  Try "help".
+Undefined command: "C-L".  Try "help".
+Quit
+Undefined command: "C-L".  Try "help".
+Undefined command: "C-L".  Try "help".
+Undefined command: "C-L".  Try "help".
+Undefined command: "C-L".  Try "help".
+Undefined command: "C-L".  Try "help".
+Undefined command: "C-L".  Try "help".
+Haltepunkt 2 at 0x80003ee: is_fifo_empty. (2 locations)
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   <MULTIPLE> 
+2.1                         y   0x080003ee in is_fifo_empty at sys/ss_can_receive_fifo.h:21
+2.2                         y   0x08000902 in is_fifo_empty at sys/ss_can_receive_fifo.h:21
+Kein Haltepunkt in dieser Zeile.
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   <MULTIPLE> 
+2.1                         y   0x080003ee in is_fifo_empty at sys/ss_can_receive_fifo.h:21
+2.2                         y   0x08000902 in is_fifo_empty at sys/ss_can_receive_fifo.h:21
+Kein Haltepunkt in dieser Zeile.
+No breakpoints or watchpoints.
+Haltepunkt 3 at 0x80002d4: file sys/ss_systick.h, line 37.
+Num     Type           Disp Enb Address    What
+3       breakpoint     keep y   0x080002d4 in handle_timer at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$2 = 0x6d60
+$3 = 28000
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$4 = 28000
+main () at main.c:68
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$5 = 0x6d60
+$6 = 28000
+$7 = 27312
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$8 = 28000
+$9 = 27312
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$10 = 27312
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$11 = 27312
+$12 = 27312
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Breakpoint 3, handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$13 = 27313
+$14 = 0x20000008
+Num     Type           Disp Enb Address    What
+3       breakpoint     keep y   0x080002d4 in handle_timer at sys/ss_systick.h:37
+	breakpoint already hit 26 times
+No breakpoints or watchpoints.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+main () at main.c:68
+$15 = {{can_frames = {{id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}}, front = 0xffffffff, rear = 0xffffffff}, {can_frames = {{id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}}, front = 0x0, rear = 0x0}}
+$16 = {can_frames = {{id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}, {id = 0x0, flags = 0x0, dlc = 0x0, data = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}}}, front = 0xffffffff, rear = 0xffffffff}
+No symbol "can_receiver_fifos" in current context.
+Invalid number 0 of repetitions.
+Undefined command: "can_receive_fifos".  Try "help".
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+main () at main.c:68
+1: handle1.tick = 0x7885
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ee in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+1: handle1.tick = 0x86e3
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:38
+1: handle1.tick = 0x8e3e
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002d8 in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+1: handle1.tick = 0xa2c9
+Auto-display expressions now in effect:
+Num Enb Expression
+1:   y  handle1.tick
+There are no auto-display expressions now.
+main () at main.c:68
+2: handle1.tick = 0xa2c9
+Auto-display expressions now in effect:
+Num Enb Expression
+2:   y  handle1.tick
+No symbol "pin_hearbeat" in current context.
+3: pin_heartbeat = 0x21
+Auto-display expressions now in effect:
+Num Enb Expression
+2:   y  handle1.tick
+3:   y  pin_heartbeat
+Auto-display expressions now in effect:
+Num Enb Expression
+3:   y  pin_heartbeat
+There are no auto-display expressions now.
+Hardware read watchpoint 4: handle1.tick
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Undefined info command: "rwatch".  Try "help info".
+Num     Type            Disp Enb Address    What
+4       read watchpoint keep y              handle1.tick
+Num     Type            Disp Enb Address    What
+4       read watchpoint keep y              handle1.tick
+Cannot watch constant value `4'.
+Num     Type            Disp Enb Address    What
+4       read watchpoint keep y              handle1.tick
+No watchpoints.
+Haltepunkt 5 at 0x80002d4: file sys/ss_systick.h, line 37.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Num     Type           Disp Enb Address    What
+5       breakpoint     keep y   0x080002d4 in handle_timer at sys/ss_systick.h:37
+	stop only if handle1.timer == 0
+No breakpoints or watchpoints.
+Haltepunkt 6 at 0x80002d4: file sys/ss_systick.h, line 37.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002d8 in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Requires argument (checkpoint id to delete)
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x08000304 in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:43
+main () at main.c:68
+Haltepunkt 7 at 0x80002d4: file sys/ss_systick.h, line 37.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$17 = 56066
+Num     Type           Disp Enb Address    What
+7       breakpoint     keep y   0x080002d4 in handle_timer at sys/ss_systick.h:37
+	stop only if handle1.tick == 10
+No breakpoints or watchpoints.
+Keine Haltepunktnummer 1.
+Haltepunkt 8 at 0x80002e0: file sys/ss_systick.h, line 38.
+Type commands for breakpoint(s) 8, one per line.
+End with a line saying just "end".
+Num     Type           Disp Enb Address    What
+8       breakpoint     keep y   0x080002e0 in handle_timer at sys/ss_systick.h:38
+	stop only if handle1.timer == 100
+        p handle1.timer
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:38
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:38
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:38
