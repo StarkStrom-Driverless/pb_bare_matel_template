@@ -1,0 +1,166 @@
+gdbinit:21: Error in sourced command file:
+main.elf: Datei oder Verzeichnis nicht gefunden.
+0x080002da in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+inti_pb_pins () at usr_configs/pin_declarations.h:27
+gpio_write (pin=0x35, value=value@entry=0x1) at sys/ss_gpio.h:92
+Undefined command: "nnnnnnnnnnnnnnnnnnnnnnnnn".  Try "help".
+main () at main.c:49
+
+Program received signal SIGINT, Interrupt.
+main () at main.c:68
+
+Program received signal SIGINT, Interrupt.
+0x080008fe in main () at main.c:68
+0x080008fe in main () at main.c:68
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+shutdown command invoked
+Remote Verbindung wurde beendet
+The program is not being run.
+The program is not being run.
+The program is not being run.
+The program is not being run.
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+gdb.error: localhost:3333: Die Wartezeit für die Verbindung ist abgelaufen.
+tools/gdbinit:55: Error in sourced command file:
+Error while executing Python code.
+The program is not being run.
+The program is not being run.
+The program is not being run.
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 34, in apport_excepthook
+    def apport_excepthook(exc_type, exc_obj, exc_tb):
+KeyboardInterrupt
+
+Original exception was:
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+gdb.error: localhost:3333: Die Wartezeit für die Verbindung ist abgelaufen.
+tools/gdbinit:55: Error in sourced command file:
+Error while executing Python code.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+
+Program received signal SIGINT, Interrupt.
+0x080008fe in main () at main.c:68
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+main () at main.c:68
+
+Program received signal SIGINT, Interrupt.
+0x080008fa in main () at main.c:68
+
+Program received signal SIGINT, Interrupt.
+0x08000900 in main () at main.c:68
+Quit
+0x080002ea in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+TypeError: %d format: a real number is required, not NoneType
+tools/gdbinit:55: Error in sourced command file:
+Error while executing Python code.
+main () at main.c:43
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+TypeError: %d format: a real number is required, not NoneType
+tools/gdbinit:55: Error in sourced command file:
+Error while executing Python code.
+The program is not being run.
+The program is not being run.
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+TypeError: %d format: a real number is required, not NoneType
+tools/gdbinit:55: Error in sourced command file:
+Error while executing Python code.
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+TypeError: %d format: a real number is required, not NoneType
+tools/gdbinit:55: Error in sourced command file:
+Error while executing Python code.
+main () at main.c:43
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+TypeError: %d format: a real number is required, not NoneType
+tools/gdbinit:55: Error in sourced command file:
+Error while executing Python code.
+None
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+TypeError: %d format: a real number is required, not NoneType
+tools/gdbinit:56: Error in sourced command file:
+Error while executing Python code.
+  File "<string>", line 3
+    print(f'->{gdbport})
+          ^
+SyntaxError: unterminated string literal (detected at line 3)
+tools/gdbinit:56: Error in sourced command file:
+Error while executing Python code.
+->None
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+TypeError: %d format: a real number is required, not NoneType
+tools/gdbinit:56: Error in sourced command file:
+Error while executing Python code.
+main () at main.c:43
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+main () at main.c:43
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43

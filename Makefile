@@ -4,6 +4,10 @@ CFLAGS  ?=  -W -Wall -Wextra -Werror -Wundef -Wshadow -Wdouble-promotion \
             -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 $(EXTRA_CFLAGS)
 LDFLAGS ?= -Tlink.ld -nostartfiles -nostdlib --specs nano.specs -lc -lgcc -Wl,--gc-sections -Wl,-Map=$@.map
 
+GDB = gdb-multiarch
+GDBINIT = tools/gdbinit
+GDBPORT = 3333
+
 # Include the sources.mk file
 include sys/sys_sources.mk
 include usr/usr_sources.mk
@@ -25,6 +29,13 @@ firmware.bin: firmware.elf
 
 flash: firmware.bin
 	st-flash --reset write $< 0x8000000
+
+oocd-flash: firmware.bin
+	cat tools/oocd-flash.cmd | nc -q 1 localhost 4444
+
+gdb:
+	gdb-multiarch --tui -silent -x 'tools/gdbinit' -iex 'set auto-load safe-path /'
+
 
 clean:
 	$(RM) firmware.*
