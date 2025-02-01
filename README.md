@@ -1,6 +1,78 @@
 # ProcessorBoard Bare Matel Template
 
-## OUTPUT
+- [ProcessorBoard Bare Matel Template](#processorboard-bare-matel-template)
+  - [Installation](#installation)
+  - [Compiling \& Flashing \& Debugging](#compiling--flashing--debugging)
+    - [Compiling](#compiling)
+    - [Flashing](#flashing)
+    - [Debugging](#debugging)
+    - [Open-OCD starten](#open-ocd-starten)
+  - [Programming](#programming)
+    - [OUTPUT](#output)
+    - [PWM](#pwm)
+    - [SYSTICK HANDLING](#systick-handling)
+    - [CAN](#can)
+    - [UART](#uart)
+    - [SPI](#spi)
+- [PIN capabilities](#pin-capabilities)
+  - [PORTA](#porta)
+  - [PORTB](#portb)
+  - [PORTC](#portc)
+
+
+## Installation
+```bash
+sudo apt install binutils-arm-none-eabi gcc-arm-none-eabi
+sudo apt install gdb-multiarch
+cd /usr/bin
+sudo ln -s gdb-multiarch arm-none-eabi-gdb
+
+# Download this arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi.tar.xz on
+# https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+
+cd /opt
+sudo tar Jxvf ~/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi.tar.xz
+
+export PATH=$PATH:/opt/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi/bin
+
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.8
+
+sudo apt install openocd
+
+sudo cp /lib/udev/rules.d/60-openocd.rules /etc/udev/rules.d/
+``` 
+
+## Compiling & Flashing & Debugging
+
+### Compiling
+```
+make compile
+```
+
+### Flashing
+```
+make flash
+
+# or if open-ocd is running in a nother terminal
+make oocd-flash
+```
+
+### Debugging
+```
+# if open-ocd is running
+make gdb
+```
+
+### Open-OCD starten
+```
+openocd -f tools/openocd.cfg
+```
+
+## Programming
+
+### OUTPUT
 To set a pin to high or low just do the following
 ```c
 int main(void) {
@@ -19,7 +91,7 @@ int main(void) {
 - Use the  GPIO_write function to set the output value
 
 
-## PWM
+### PWM
 To use the pwm function of a pin just do the following
 ```c
 int main(void) {
@@ -45,7 +117,7 @@ int main(void) {
 - The capture compare value has to be lower than the auto reload value
 
 
-## SYSTICK HANDLING
+### SYSTICK HANDLING
 To use the systick for executing commands in specific time intervalls just do this.
 
 - Go to usr_configs/systick_handles.h
@@ -101,7 +173,7 @@ int main(void) {
 }
 ```
 
-## CAN
+### CAN
 For using CAN follow the following pattern.
 - At first you need a main 
 
@@ -155,7 +227,7 @@ struct CanFrame {
 ```
 The functions `fifo_remove_can_frame()` and `can_send()` are expecting it.
 
-## UART
+### UART
 
 ```c
 #include "ss_makros.h"
@@ -187,7 +259,7 @@ int main(void) {
 - with uart_init(<uart_interface>, baudrate) you can init a uart-interface
 - with uart_write_buf(<uart_interface>, <buffer>, <buffer_len>), you can send a uart_message
 
-## SPI
+### SPI
 
 ```c
 #include "ss_makros.h"
