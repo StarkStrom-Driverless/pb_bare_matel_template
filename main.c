@@ -47,7 +47,6 @@ int main(void) {
 
 
 
-  if (init_ads131() == -1) ErrorHandler();
 
 
   if(CAN_Init(1, 1000000) == -1) ErrorHandler();
@@ -59,11 +58,7 @@ int main(void) {
 
   gpio_write(pin_heartbeat, GPIO_OFF);
 
-  struct adcOutput adc_vals;
-  struct CanFrame can_frame_adc;
 
-  can_frame_adc.id = 0x10;
-  can_frame_adc.dlc = 4;
 
   for (;;) {
 
@@ -80,15 +75,7 @@ int main(void) {
       gpio_write(pin_heartbeat, GPIO_TOGGLE);
     }
 
-    if (ads_is_data_ready()) {
-      ads_read(&adc_vals);
-      can_frame_adc.data[0] = (uint8_t)(adc_vals.ch[1]);
-      can_frame_adc.data[1] = (uint8_t)(adc_vals.ch[1] >> 8);
-      can_frame_adc.data[2] = (uint8_t)(adc_vals.ch[1] >> 16);
-      can_frame_adc.data[3] = (uint8_t)(adc_vals.ch[1] >> 24);
-      can_send(&can_frame_adc, 1);
 
-    }
 
 
   }

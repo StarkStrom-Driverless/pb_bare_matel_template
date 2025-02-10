@@ -107,5 +107,27 @@ uint16_t spi_exchange_data16(uint8_t spi_id, uint16_t data) {
     return (uint16_t)spi->spi_dr;
 }
 
+void spiSendReceiveArrays(uint8_t spi_id, uint8_t *dataTx, uint8_t *dataRx, uint16_t numberOfBytes) {
+    struct spi* spi = get_spi_ptr(spi_id);
+    uint16_t i;
+    for (i = 0; i < numberOfBytes; i++) {
+        // Warte, bis das TXE-Flag gesetzt ist (Sende-Puffer leer)
+        while (!(spi->spi_dr & BIT(4)));
+        
+        // Daten senden
+        spi->spi_dr = dataTx[i];
+        
+        // Warte, bis das RXNE-Flag gesetzt ist (Daten empfangen)
+        while (!(spi->spi_sr & BIT(0)));
+        
+        // Daten lesen
+        dataRx[i] = spi->spi_dr;
+    }
+    
+    // Warte, bis die SPI-Übertragung vollständig ist (BSY = 0)
+    while (spi->spi_sr & BIT(7));
+}
+
+
 
 #endif
