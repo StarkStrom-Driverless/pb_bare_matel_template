@@ -81,15 +81,31 @@ int8_t SPI_Init(uint8_t spi_id, uint32_t bitrate) {
     return 0;
 }
 
-uint8_t spi_exchange_data(uint8_t data, uint8_t spi_id) {
+uint8_t spi_exchange_data(uint8_t spi_id, uint8_t data) {
     struct spi* spi = get_spi_ptr(spi_id);
     union SPI_SR* spi_sr = (union SPI_SR*)(&spi->spi_sr);
     
-    while(spi_sr->fields.txe == 0);
+    spi->spi_cr1 &= ~(uint32_t)(1 << 11);
+    
+    while (spi_sr->fields.txe == 0);
     spi->spi_dr = data;
-
-    while(spi_sr->fields.rxne == 0);
+    
+    while (spi_sr->fields.rxne == 0);
     return (uint8_t)spi->spi_dr;
 }
+
+uint16_t spi_exchange_data16(uint8_t spi_id, uint16_t data) {
+    struct spi* spi = get_spi_ptr(spi_id);
+    union SPI_SR* spi_sr = (union SPI_SR*)(&spi->spi_sr);
+    
+    spi->spi_cr1 |= (1 << 11);
+    
+    while (spi_sr->fields.txe == 0);
+    spi->spi_dr = data;
+    
+    while (spi_sr->fields.rxne == 0);
+    return (uint16_t)spi->spi_dr;
+}
+
 
 #endif

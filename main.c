@@ -19,6 +19,9 @@
 #include "systick_isr.h"
 #include "pin_declarations.h"
 
+
+#include "ads131m04.h"
+
 extern Systick_Handle handle1;
 extern Systick_Handle handle2;
 
@@ -42,25 +45,25 @@ int main(void) {
 
   inti_pb_pins();
 
-  //uint16_t pa2 = PIN('A', 2);
-  //gpio_set_mode(pa2, GPIO_MODE_AF);
-  //gpio_init_pwm(pa2, 159, 2000);
 
-  SPI_Init(1, 1000000);
+
+  if (init_ads131() == -1) ErrorHandler();
+
 
   if(CAN_Init(1, 1000000) == -1) ErrorHandler();
-  if(CAN_Init(2, 1000000) == -1) ErrorHandler();
+
 
 
 
   systick_init(16000000/1000);
 
-  if (uart_init(1, 115200) == -1) ErrorHandler();
-
-  //gpio_write(pa2, 1000);
-
   gpio_write(pin_heartbeat, GPIO_OFF);
-  
+
+  struct adcOutput adc_vals;
+  struct CanFrame can_frame_adc;
+
+  can_frame_adc.id = 0x10;
+  can_frame_adc.dlc = 4;
 
   for (;;) {
 
@@ -74,10 +77,17 @@ int main(void) {
         gpio_write(pin_blue_one, GPIO_TOGGLE);
       }
 
-
-      uart_write_buf(1, "TestHallo \n\r", 12);
-
       gpio_write(pin_heartbeat, GPIO_TOGGLE);
+    }
+
+    if (ads_is_data_ready()) {
+      ads_read(&adc_vals);
+      can_frame_adc.data[0] = (uint8_t)(adc_vals.ch[1]);
+      can_frame_adc.data[1] = (uint8_t)(adc_vals.ch[1] >> 8);
+      can_frame_adc.data[2] = (uint8_t)(adc_vals.ch[1] >> 16);
+      can_frame_adc.data[3] = (uint8_t)(adc_vals.ch[1] >> 24);
+      can_send(&can_frame_adc, 1);
+
     }
 
 

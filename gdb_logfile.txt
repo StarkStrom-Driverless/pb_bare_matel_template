@@ -494,3 +494,280 @@ Continuing.
 
 Program received signal SIGINT, Interrupt.
 handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:38
+0x080002de in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+#0  main () at main.c:43
+main () at main.c:49
+main () at main.c:58
+No symbol "x" in current context.
+A syntax error in expression, near `0x08000000'.
+0x8000000 <tab>:	0x20020000	0x08000975
+0x8000000 <tab>:	0x20020000	0x08000975	0x08000965	0x08000965
+0x8000010 <tab+16>:	0x08000965	0x08000965	0x08000965	0x08000965
+0x8000020 <tab+32>:	0x08000965	0x08000965	0x08000965	0x08000965
+0x8000030 <tab+48>:	0x08000965	0x08000965	0x08000965	0x08000851
+$1 = 0x8000850
+$2 = 0xe
+$3 = 0x8000974
+A syntax error in expression, near `.vectors@6'.
+No symbol "vectors" in current context.
+$4 = {0x20020000, 0x8000975, 0x8000965, 0x8000965, 0x8000965, 0x8000965}
+0x0800058c in CAN_Init (can_id=can_id@entry=0x1, baud=baud@entry=0xf4240) at sys/ss_can.h:93
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x08000890 in main at main.c:43
+	breakpoint already hit 1 time
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+CAN_Init (can_id=can_id@entry=0x1, baud=baud@entry=0xf4240) at sys/ss_can.h:93
+Undefined command: "split".  Try "help".
+Undefined command: "split".  Try "help".
+0x080002d8 in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Haltepunkt 1 at 0x8000890: file main.c, line 43.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000974 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:43
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002dc in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+$1 = 0xe000e018
+$2 = 0xe000e018
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+$3 = 0xe000e018
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:38
+$4 = 0xe000e018
+0xe000e018:	0x000031f8
+$5 = 0x31f8
+0xe000e018:	0x000031f8
+$6 = 0x31f8
+$7 = 0x31f8
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+$8 = 0xaaa
+$9 = 0xaaa
+$10 = 0xaaa
+main () at main.c:68
+
+Program received signal SIGINT, Interrupt.
+0x080008fe in main () at main.c:68
+$11 = 0x840
+Haltepunkt 2 at 0x800090a: file main.c, line 71.
+Continuing.
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+
+Program received signal SIGINT, Interrupt.
+0x080008fe in main () at main.c:68
+Quit
+Haltepunkt 3 at 0x800092e: file main.c, line 80.
+Continuing.
+jtag status contains invalid mode value - communication failure
+jtag status contains invalid mode value - communication failure
+
+Program received signal SIGINT, Interrupt.
+0x080008fe in main () at main.c:68
+delay (count=count@entry=0x10) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000b0c: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000bbc msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+init_ads131 () at usr/ads131m04.h:147
+main () at main.c:52
+Haltepunkt 2 at 0x8000b8c: file main.c, line 80.
+Continuing.
+
+Breakpoint 2, main () at main.c:80
+$1 = {status = 0x0, ch = {0x50000, 0x0, 0x7b, 0x0}}
+Continuing.
+
+Breakpoint 2, main () at main.c:80
+$2 = {status = 0x0, ch = {0x0, 0x7b, 0xff8d0000, 0x0}}
+Continuing.
+
+Breakpoint 2, main () at main.c:80
+$3 = {status = 0x0, ch = {0xff8d0500, 0x0, 0x0, 0x7b0000}}
+$4 = {status = 0x0, ch = {0xff8d0500, 0x0, 0x0, 0x7b0000}}
+Continuing.
+
+Breakpoint 2, main () at main.c:80
+$5 = {status = 0x0, ch = {0x0, 0x0, 0x0, 0xff8d0500}}
+Hardware watchpoint 3: adc_vals
+Continuing.
+Warning:
+Could not insert hardware watchpoint 3.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+List of info subcommands:
+
+info address -- Describe where symbol SYM is stored.
+info all-registers -- List of all registers and their contents, for selected stack frame.
+info args -- All argument variables of current stack frame or those matching REGEXPs.
+info auto-load -- Print current status of auto-loaded files.
+info auxv -- Den untergeordneten Hilfsvektor anzeigen.
+info bookmarks -- Status of user-settable bookmarks.
+info breakpoints, info b -- Status of specified breakpoints (all user-settable breakpoints if no argument).
+info checkpoints -- IDs of currently known checkpoints.
+info classes -- All Objective-C classes, or those matching REGEXP.
+info common -- Print out the values contained in a Fortran COMMON block.
+info connections -- Target connections in use.
+info copying -- Conditions for redistributing copies of GDB.
+info dcache -- Print information on the dcache performance.
+info display -- Expressions to display when program stops, with code numbers.
+info exceptions -- List all Ada exception names.
+info extensions -- All filename extensions associated with a source language.
+info files -- Names of targets and files being debugged.
+info float -- Print the status of the floating point unit.
+info frame, info f -- All about the selected stack frame.
+info frame-filter -- List all registered Python frame-filters.
+info functions -- All function names or those matching REGEXPs.
+info guile, info gu -- Prefix command for Guile info displays.
+info inferiors -- Print a list of inferiors being managed.
+info line -- Core addresses of the code for a source line.
+info locals -- All local variables of current stack frame or those matching REGEXPs.
+info macro -- Show the definition of MACRO, and it's source location.
+info macros -- Show the definitions of all macros at LINESPEC, or the current source location.
+info mem -- Memory region attributes.
+info module -- Print information about modules.
+info modules -- All module names, or those matching REGEXP.
+info os -- Show OS data ARG.
+info pretty-printer -- GDB command to list all registered pretty-printers.
+info probes -- Show available static probes.
+info proc -- Show additional information about a process.
+info program -- Execution status of the program.
+info record, info rec -- Info record options.
+info registers, info r -- List of integer registers and their contents, for selected stack frame.
+info scope -- List the variables local to a scope.
+info selectors -- All Objective-C selectors, or those matching REGEXP.
+info sharedlibrary, info dll -- Status of loaded shared object libraries.
+info signals, info handle -- What debugger does when program gets various signals.
+info skip -- Display the status of skips.
+info source -- Information about the current source file.
+info sources -- All source files in the program or those matching REGEXP.
+info stack, info s -- Backtrace of the stack, or innermost COUNT frames.
+info static-tracepoint-markers -- List target static tracepoints markers.
+info symbol -- Describe what symbol is at location ADDR.
+info target -- Names of targets and files being debugged.
+info tasks -- Provide information about all known Ada tasks.
+info terminal -- Print inferior's saved terminal status.
+info threads -- Display currently known threads.
+info tracepoints, info tp -- Status of specified tracepoints (all tracepoints if no argument).
+info tvariables -- Status of trace state variables and their values.
+info type-printers -- GDB command to list all registered type-printers.
+info types -- All type names, or those matching REGEXP.
+info unwinder -- GDB command to list unwinders.
+info variables -- All global and static variable names or those matching REGEXPs.
+info vector -- Print the status of the vector unit.
+info vtbl -- Show the virtual function table for a C++ object.
+info warranty -- Various kinds of warranty you do not have.
+info watchpoints -- Status of specified watchpoints (all watchpoints if no argument).
+info win -- List of all displayed windows.
+info xmethod -- GDB command to list registered xmethod matchers.
+
+Type "help info" followed by info subcommand name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Type "apropos -v word" for full documentation of commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x08000b0c in main at main.c:46
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x08000b8c in main at main.c:80
+	breakpoint already hit 4 times
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x08000b8c in main at main.c:80
+	breakpoint already hit 4 times
+No breakpoints or watchpoints.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x08000ad4 in ads_read (ads_output_ptr=ads_output_ptr@entry=0x2001ffe4) at usr/ads131m04.h:207
+Haltepunkt 4 at 0x8000b8c: file main.c, line 80.
+Continuing.
+
+Breakpoint 4, main () at main.c:80
+$6 = {status = 0x58d, ch = {0x0, 0x0, 0x7b00, 0x7b00}}
+Continuing.
+
+Breakpoint 4, main () at main.c:80
+$7 = {status = 0x0, ch = {0x0, 0x0, 0x0, 0xff8d0500}}
+Continuing.
+
+Breakpoint 4, main () at main.c:80
+$8 = {status = 0x0, ch = {0x0, 0x8d05, 0x0, 0x0}}
+$9 = {status = 0x0, ch = {0x0, 0x8d05, 0x0, 0x0}}
+Continuing.
+
+Breakpoint 4, main () at main.c:80
+$10 = {status = 0x0, ch = {0x0, 0x7b0000, 0x0, 0x0}}
+Continuing.
+
+Breakpoint 4, main () at main.c:80
+$11 = {status = 0x0, ch = {0x0, 0x0, 0x0, 0xff8d0500}}
+$12 = {status = 0x0, ch = {0x0, 0x0, 0x0, 0xff8d0500}}
+Continuing.
+
+Breakpoint 4, main () at main.c:80
+$13 = {status = 0x0, ch = {0x0, 0xff8d0500, 0x0, 0x0}}
+0x08000a6c in gpio_read (pin=<optimized out>) at sys/ss_gpio.h:112
+Haltepunkt 1 at 0x8000b10: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000be8 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000b9a: file main.c, line 84.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ec in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+0x08000b9e in main () at main.c:83
+Haltepunkt 1 at 0x8000b18: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000bf0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000ba2: file main.c, line 84.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x08000a6a in gpio_read (pin=0x4) at sys/ss_gpio.h:110
+gpio_read (pin=0x4) at sys/ss_gpio.h:110
+Haltepunkt 1 at 0x8000b18: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000bf0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000ba2: file main.c, line 84.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x08000a86 in ads_is_data_ready () at usr/ads131m04.h:186
+Warnung: Error detected on fd 0
+error detected on stdin
