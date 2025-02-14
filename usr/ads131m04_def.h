@@ -37,7 +37,7 @@
  #define ADS131M0X_H_
  
  // Standard libraries
- #include <assert.h>
+
  #include <stdint.h>
  #include <stdbool.h>
  
@@ -81,10 +81,7 @@
  #define CRC_CCITT
  //#define CRC_ANSI
  
- /* Disable assertions when not in the CCS "Debug" configuration */
- #ifndef _DEBUG
-     #define NDEBUG
- #endif
+
  
  
  //

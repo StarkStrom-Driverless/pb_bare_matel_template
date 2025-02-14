@@ -41,13 +41,26 @@ static inline void spin(volatile uint32_t count) {
 
 
 
+
+
+void uint32ToUint8Array_LE(uint32_t value, uint8_t array[4]) {
+    array[3] = (uint8_t)(value & 0xFF);
+    array[2] = (uint8_t)((value >> 8) & 0xFF);
+    array[1] = (uint8_t)((value >> 16) & 0xFF);
+    array[0] = (uint8_t)((value >> 24) & 0xFF);
+}
+
+
+
+
+
 int main(void) {
 
   inti_pb_pins();
 
+  init_ads131_wrapper();
 
-
-
+  adcStartup();
 
   if(CAN_Init(1, 1000000) == -1) ErrorHandler();
 
@@ -58,12 +71,18 @@ int main(void) {
 
   gpio_write(pin_heartbeat, GPIO_OFF);
 
+  adc_channel_data adc_data;
+
+  struct CanFrame adc_can_frame;
+  adc_can_frame.id = 0xFF;
+  adc_can_frame.dlc = 4;
 
 
   for (;;) {
 
-
+    /*
     if (handle_timer(&handle1)) {
+      
       
       if(!is_fifo_empty(&can_receive_fifos[0])) {
         struct CanFrame can_frame;
@@ -73,9 +92,16 @@ int main(void) {
       }
 
       gpio_write(pin_heartbeat, GPIO_TOGGLE);
+    }  
+    */
+
+    if (data_received()) {
+      readData(&adc_data);
+      uint32ToUint8Array_LE(adc_data.channel3, adc_can_frame.data);
+      can_send(&adc_can_frame, 1);
+      delay(10000);
     }
-
-
+ 
 
 
   }

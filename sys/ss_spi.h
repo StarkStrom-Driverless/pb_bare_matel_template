@@ -81,51 +81,24 @@ int8_t SPI_Init(uint8_t spi_id, uint32_t bitrate) {
     return 0;
 }
 
-uint8_t spi_exchange_data(uint8_t spi_id, uint8_t data) {
-    struct spi* spi = get_spi_ptr(spi_id);
-    union SPI_SR* spi_sr = (union SPI_SR*)(&spi->spi_sr);
-    
-    spi->spi_cr1 &= ~(uint32_t)(1 << 11);
-    
-    while (spi_sr->fields.txe == 0);
-    spi->spi_dr = data;
-    
-    while (spi_sr->fields.rxne == 0);
-    return (uint8_t)spi->spi_dr;
-}
 
-uint16_t spi_exchange_data16(uint8_t spi_id, uint16_t data) {
-    struct spi* spi = get_spi_ptr(spi_id);
-    union SPI_SR* spi_sr = (union SPI_SR*)(&spi->spi_sr);
-    
-    spi->spi_cr1 |= (1 << 11);
-    
-    while (spi_sr->fields.txe == 0);
-    spi->spi_dr = data;
-    
-    while (spi_sr->fields.rxne == 0);
-    return (uint16_t)spi->spi_dr;
-}
 
 void spiSendReceiveArrays(uint8_t spi_id, uint8_t *dataTx, uint8_t *dataRx, uint16_t numberOfBytes) {
     struct spi* spi = get_spi_ptr(spi_id);
+    union SPI_SR* spi_sr = (union SPI_SR*)(&spi->spi_sr);
+
     uint16_t i;
     for (i = 0; i < numberOfBytes; i++) {
-        // Warte, bis das TXE-Flag gesetzt ist (Sende-Puffer leer)
-        while (!(spi->spi_dr & BIT(4)));
-        
-        // Daten senden
+
+        while (spi_sr->fields.txe == 0);
         spi->spi_dr = dataTx[i];
+
         
-        // Warte, bis das RXNE-Flag gesetzt ist (Daten empfangen)
-        while (!(spi->spi_sr & BIT(0)));
-        
-        // Daten lesen
-        dataRx[i] = spi->spi_dr;
+        while (spi_sr->fields.rxne == 0);
+        dataRx[i] = (uint8_t)spi->spi_dr;
     }
     
-    // Warte, bis die SPI-Übertragung vollständig ist (BSY = 0)
-    while (spi->spi_sr & BIT(7));
+    while (spi_sr->fields.bsy == 0);
 }
 
 

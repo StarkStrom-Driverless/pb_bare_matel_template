@@ -771,3 +771,390 @@ Program received signal SIGINT, Interrupt.
 0x08000a86 in ads_is_data_ready () at usr/ads131m04.h:186
 Warnung: Error detected on fd 0
 error detected on stdin
+0x08000816 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 " \254\377\001 \241\n", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:115
+Haltepunkt 1 at 0x8000ba4: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c4c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+
+Program received signal SIGINT, Interrupt.
+0x0800080e in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\n\254\377\001 \241\n", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:128
+0x08000a0e in readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:359
+Haltepunkt 1 at 0x8000ba4: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c4c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+No symbol "ads_data" in current context.
+$1 = {response = 0x0, crc = 0x0, channel0 = 0x0, channel1 = 0x0, channel2 = 0x0, channel3 = 0x0}
+$2 = {response = 0x0, crc = 0x0, channel0 = 0x0, channel1 = 0x0, channel2 = 0x0, channel3 = 0x0}
+readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:298
+$3 = "\000\000\000"
+Quit
+readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:339
+Haltepunkt 1 at 0x8000ba4: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c4c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+init_ads131_wrapper () at usr/ads131m04.h:52
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0x3d0900) at sys/ss_spi.h:65
+main () at main.c:50
+adcStartup () at usr/ads131m04.h:65
+restoreRegisterDefaults () at usr/ads131m04.h:741
+adcStartup () at usr/ads131m04.h:174
+$1 = <optimized out>
+writeSingleRegister (address=address@entry=0x2, data=data@entry=0x510) at usr/ads131m04.h:250
+main () at main.c:52
+readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:298
+$2 = 0x0
+0x0800089a in spiSendReceiveByte (data=data@entry=0x0) at usr/ads131m04.h:92
+Haltepunkt 1 at 0x8000b90: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c38 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+$1 = {response = 0xa0, crc = 0xa0, channel0 = 0x0, channel1 = 0x0, channel2 = 0xffa00000, channel3 = 0x0}
+$2 = {response = 0xf, crc = 0x0, channel0 = 0xffa00000, channel1 = 0x0, channel2 = 0xa000, channel3 = 0x0}
+$3 = {response = 0xa000, crc = 0xa000, channel0 = 0x0, channel1 = 0xfa000, channel2 = 0x0, channel3 = 0xf00}
+$4 = {response = 0x0, crc = 0x0, channel0 = 0xa000, channel1 = 0xffa00000, channel2 = 0x0, channel3 = 0xfa000}
+$5 = {response = 0x0, crc = 0xa000, channel0 = 0x0, channel1 = 0xfa000, channel2 = 0x0, channel3 = 0xf00}
+$6 = {response = 0x0, crc = 0x0, channel0 = 0xf00, channel1 = 0xffa00000, channel2 = 0x0, channel3 = 0xfa000}
+$7 = {response = 0x0, crc = 0x0, channel0 = 0xffa0a000, channel1 = 0x0, channel2 = 0xa000, channel3 = 0xffa00000}
+$8 = {response = 0xf00, crc = 0x0, channel0 = 0xa000, channel1 = 0x0, channel2 = 0x0, channel3 = 0xffa00000}
+$9 = {response = 0x0, crc = 0x0, channel0 = 0xffa0a000, channel1 = 0x0, channel2 = 0xa000, channel3 = 0xffa00000}
+$10 = {response = 0xfa0, crc = 0xfa0, channel0 = 0x0, channel1 = 0xf00, channel2 = 0xffa00000, channel3 = 0x0}
+Hardware watchpoint 2: adc_data
+Continuing.
+Warning:
+Could not insert hardware watchpoint 2.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Warning:
+Could not insert hardware watchpoint 2.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Warning:
+Could not insert hardware watchpoint 2.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Warning:
+Could not insert hardware watchpoint 2.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Warning:
+Could not insert hardware watchpoint 2.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Num     Type           Disp Enb Address    What
+2       hw watchpoint  keep y              adc_data
+0x08000c30 in main () at main.c:77
+Haltepunkt 1 at 0x8000bb4: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c64 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000c34: file main.c, line 78.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080002ee in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+main () at main.c:77
+Haltepunkt 1 at 0x8000bc8: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c78 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000c48: file main.c, line 78.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+main () at main.c:77
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+gpio_read (pin=0x4) at sys/ss_gpio.h:112
+main () at main.c:66
+gpio_read (pin=<optimized out>) at usr/ads131m04.h:66
+Haltepunkt 1 at 0x8000bcc: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c7c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000c4c: file main.c, line 78.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+data_received () at usr/ads131m04.h:65
+Warnung: Source file is more recent than executable.
+0x0800088e in data_received () at usr/ads131m04.h:65
+Haltepunkt 1 at 0x8000bdc: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c8c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000c5c: file main.c, line 78.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x08000898 in gpio_read (pin=0x4) at sys/ss_gpio.h:110
+0x08000c58 in main () at main.c:77
+Haltepunkt 1 at 0x8000bdc: file main.c, line 46.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c8c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:46
+Haltepunkt 2 at 0x8000c5c: file main.c, line 78.
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+$1 = {response = 0xe4dd, crc = 0xc772, channel0 = 0xffddad00, channel1 = 0xdd, channel2 = 0x72ddad, channel3 = 0xffdf000f}
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+$2 = {response = 0x0, crc = 0xdd, channel0 = 0xff8d72dd, channel1 = 0xc700, channel2 = 0xffdddb71, channel3 = 0xff88008f}
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+$3 = {response = 0xdddd, crc = 0x4ff, channel0 = 0x4c0000, channel1 = 0xffc973dd, channel2 = 0xffffd700, channel3 = 0xffdded73}
+$4 = {response = 0xdddd, crc = 0x4ff, channel0 = 0x4c0000, channel1 = 0xffc973dd, channel2 = 0xffffd700, channel3 = 0xffdded73}
+$5 = {response = 0xdddd, crc = 0x4ff, channel0 = 0x4c0000, channel1 = 0xffc973dd, channel2 = 0xffffd700, channel3 = 0xffdded73}
+Hardware watchpoint 3: adc_data.channel0
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080009b0 in readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:345
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080009b0 in readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:345
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x080009b0 in readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:345
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+No symbol "info" in current context.
+Num     Type           Disp Enb Address    What
+3       hw watchpoint  keep y              adc_data.channel0
+No watchpoints.
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+$6 = {response = 0x5700, crc = 0xb100, channel0 = 0xdd12, channel1 = 0xffdd5d00, channel2 = 0xfdd, channel3 = 0x70dda1}
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+$7 = {response = 0x951c, crc = 0xff93, channel0 = 0xfdd, channel1 = 0x72dd26, channel2 = 0x80000, channel3 = 0xffeb72dd}
+Continuing.
+
+Breakpoint 2, main () at main.c:78
+$8 = {response = 0xdd00, crc = 0xfdd, channel0 = 0x2672dd, channel1 = 0xd000, channel2 = 0xffdd2672, channel3 = 0x2c004b}
+Warnung: Source file is more recent than executable.
+0x08000310 in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:39
+Haltepunkt 1 at 0x8000c40: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000d14 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000ce2: file main.c, line 98.
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+
+Breakpoint 2, main () at main.c:98
+
+Breakpoint 2, main () at main.c:98
+
+Breakpoint 2, main () at main.c:98
+Warnung: Source file is more recent than executable.
+main () at main.c:98
+Haltepunkt 1 at 0x8000c40: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000d14 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000ce2: file main.c, line 98.
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+
+Breakpoint 2, main () at main.c:98
+
+Breakpoint 2, main () at main.c:98
+data_received () at usr/ads131m04.h:69
+
+Breakpoint 2, main () at main.c:98
+
+Breakpoint 2, main () at main.c:98
+$1 = 0xffc01c77
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+$2 = 0xffc01c77
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+$3 = 0xffc01c77
+
+Breakpoint 2, main () at main.c:98
+
+Breakpoint 2, main () at main.c:98
+0x08000830 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff8e "", dataRx=dataRx@entry=0x2001ff8f <incomplete sequence \372>, numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:121
+Haltepunkt 1 at 0x8000c40: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000d0c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000cca: file main.c, line 96.
+Continuing.
+
+Breakpoint 2, main () at main.c:96
+No symbol "adc_channel" in current context.
+$1 = 0xff80375c
+Continuing.
+
+Breakpoint 2, main () at main.c:96
+$2 = {response = 0xb701, crc = 0x8e, channel0 = 0x3c0a, channel1 = 0xb0026, channel2 = 0x500bde, channel3 = 0xa01ba}
+Continuing.
+
+Breakpoint 2, main () at main.c:96
+$3 = {response = 0xbe0, crc = 0xff00, channel0 = 0xffcf64e0, channel1 = 0x3e6f4a, channel2 = 0xffb53e6f, channel3 = 0xb5fb}
+No symbol "adc_dat" in current context.
+Continuing.
+
+Breakpoint 2, main () at main.c:96
+$4 = {response = 0xbe0, crc = 0xff00, channel0 = 0xffcf64e0, channel1 = 0x3e6f4a, channel2 = 0xffb53e6f, channel3 = 0xb5fb}
+Continuing.
+
+Breakpoint 2, main () at main.c:96
+$5 = {response = 0xbe37, crc = 0x380, channel0 = 0x2ba43, channel1 = 0xfff72184, channel2 = 0x375c26, channel3 = 0xffc0375c}
+Continuing.
+
+Breakpoint 2, main () at main.c:96
+$6 = {response = 0xf73c, crc = 0xff00, channel0 = 0x51023c, channel1 = 0xffc32d76, channel2 = 0x76c32d, channel3 = 0x76c3}
+0x0800048e in get_can_ptr (can_id=can_id@entry=0x1) at sys/ss_can.h:38
+Haltepunkt 1 at 0x8000c18: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000cec msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000cb2: file main.c, line 98.
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+$1 = 0xffbb1200
+$2 = -4517376
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+$3 = 0xffbbff00
+$4 = -4456704
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+0x08000826 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff8e "", dataRx=dataRx@entry=0x2001ff8f <incomplete sequence \327>, numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:117
+Haltepunkt 1 at 0x8000c18: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ce4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000cb2: file main.c, line 98.
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+$1 = 0xffbbbd00
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+$2 = 0x37ff00
+readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:314
+0x08000ca0 in main () at main.c:95
+Haltepunkt 1 at 0x8000c18: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ce4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000cb2: file main.c, line 98.
+Continuing.
+
+Breakpoint 2, main () at main.c:98
+$1 = 0x51fa00
+readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:314
+No symbol "combinedValue" in current context.
+No symbol "combinedValue" in current context.
+$2 = 0x8047
+main () at main.c:97
+
+Breakpoint 2, main () at main.c:98
+0x080002fc in handle_timer (handle=handle@entry=0x20000000 <handle1>) at sys/ss_systick.h:37
+Haltepunkt 1 at 0x8000c18: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000cec msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+delay (count=count@entry=0x2710) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000bc0: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c54 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000c26: file main.c, line 101.
+Continuing.
+
+Breakpoint 2, main () at main.c:101
+$1 = 0xffa82e00
+Continuing.
+
+Breakpoint 2, main () at main.c:101
+$2 = 0xffedbf00
+Continuing.
+
+Breakpoint 2, main () at main.c:101
+$3 = 0x0
+Warnung: Error detected on fd 0
+error detected on stdin

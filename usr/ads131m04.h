@@ -47,16 +47,27 @@
 uint16_t cs_pin;
 uint16_t rst_pin;
 uint16_t rx_ads;
+uint16_t cs;
 
 void init_ads131_wrapper() {
     cs_pin = 0;
     rst_pin = PIN('A', 3);
     rx_ads = PIN('A', 4);
+    cs = PIN('A', 8);
 
     gpio_set_mode(rx_ads, GPIO_MODE_INPUT);
     gpio_set_mode(rst_pin, GPIO_MODE_OUTPUT);
+    gpio_set_mode(cs, GPIO_MODE_OUTPUT);
 
     gpio_write(rst_pin, GPIO_ON);
+    gpio_write(cs, GPIO_ON);
+
+    SPI_Init(1, 1000000);
+}
+
+uint8_t data_received() {
+    uint8_t data = gpio_read(rx_ads);
+    return (!data)?0:1;
 }
 
 void delay_us(uint16_t val) {
@@ -64,7 +75,7 @@ void delay_us(uint16_t val) {
 }
 
 void delay_ms(uint16_t val) {
-    delay(val*63);
+    delay(val*16*1000);
 }
 
 void setSYNC_RESET(uint8_t val) {
@@ -80,7 +91,11 @@ void toggleRESET() {
 }
 
 void setCS(uint8_t val) {
-    (void)val;
+    if (val) {
+        gpio_write(cs, GPIO_ON);
+    } else {
+        gpio_write(cs, GPIO_OFF);
+    }
 }
 
 
@@ -163,7 +178,10 @@ uint8_t spiSendReceiveByte(uint8_t data) {
  
      /* (OPTIONAL) Toggle nRESET pin to ensure default register settings. */
      /* NOTE: This also ensures that the device registers are unlocked.	 */
-     toggleRESET();
+     //delay_ms(5);
+     //toggleRESET();
+     //delay_ms(5);
+     //toggleRESET();
  
      /* (REQUIRED) Initialize internal 'registerMap' array with device default settings */
      restoreRegisterDefaults();
@@ -173,7 +191,7 @@ uint8_t spiSendReceiveByte(uint8_t data) {
      (void)response;
  
      /* (OPTIONAL) Define your initial register settings here */
-     writeSingleRegister(CLOCK_ADDRESS, (CLOCK_DEFAULT & ~CLOCK_OSR_MASK) | CLOCK_OSR_256);
+     writeSingleRegister(CLOCK_ADDRESS, (CLOCK_DEFAULT & ~CLOCK_OSR_MASK) | CLOCK_OSR_8192);
  
      /* (REQUIRED) Configure MODE register settings
       * NOTE: This function call is required here for this particular code implementation to work.
@@ -201,8 +219,7 @@ uint8_t spiSendReceiveByte(uint8_t data) {
  //*****************************************************************************
  uint16_t readSingleRegister(uint8_t address)
  {
-     /* Check that the register address is in range */
-     assert(address < NUM_REGISTERS);
+
  
  // Build TX and RX byte array
  #ifdef ENABLE_CRC_IN
@@ -242,8 +259,7 @@ uint8_t spiSendReceiveByte(uint8_t data) {
  //*****************************************************************************
  void writeSingleRegister(uint8_t address, uint16_t data)
  {
-     /* Check that the register address is in range */
-     assert(address < NUM_REGISTERS);
+
  
      // (OPTIONAL) Enforce certain register field values when
      // writing to the MODE register to fix the operation mode
@@ -446,12 +462,7 @@ uint8_t spiSendReceiveByte(uint8_t data) {
  //*****************************************************************************
  uint16_t sendCommand(uint16_t opcode)
  {
-     /* Assert if this function is used to send any of the following opcodes */
-     assert(OPCODE_RREG != opcode);      /* Use "readSingleRegister()"   */
-     assert(OPCODE_WREG != opcode);      /* Use "writeSingleRegister()"  */
-     assert(OPCODE_LOCK != opcode);      /* Use "lockRegisters()"        */
-     assert(OPCODE_UNLOCK != opcode);    /* Use "unlockRegisters()"      */
-     assert(OPCODE_RESET != opcode);     /* Use "resetDevice()"          */
+
  
      // Build TX and RX byte array
  #ifdef ENABLE_CRC_IN
@@ -535,7 +546,7 @@ uint8_t spiSendReceiveByte(uint8_t data) {
      setCS(HIGH);
  
      // tSRLRST delay, ~1ms with 2.048 MHz fCLK
-     delay_ms(1);
+     delay_ms(5);
  
      // Update register setting array to keep software in sync with device
      restoreRegisterDefaults();
@@ -659,8 +670,6 @@ uint8_t spiSendReceiveByte(uint8_t data) {
  //*****************************************************************************
  uint16_t calculateCRC(const uint8_t dataBytes[], uint8_t numberBytes, uint16_t initialValue)
  {
-     /* Check that "dataBytes" is not a null pointer */
-     assert(dataBytes != 0x00);
  
      int         bitIndex, byteIndex;
      bool        dataMSb;						/* Most significant bit of data byte */

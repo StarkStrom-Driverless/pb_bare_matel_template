@@ -109,7 +109,7 @@ static inline void gpio_write(uint16_t pin, uint16_t value) {
 static inline uint8_t gpio_read(uint16_t pin) {
   struct gpio *gpio = GPIO(PINBANK(pin));
 
-  return (uint8_t)(gpio->IDR & BIT(PINNO(pin)));
+  return (gpio->IDR & BIT(PINNO(pin)))? 0x01 : 0x00;
 }
 
 #endif
