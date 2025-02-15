@@ -33,6 +33,9 @@ union SPI_CR1 {
     volatile uint32_t spi_cr1;
 };
 
+
+
+
 union SPI_SR {
     struct SPI_SR_FIELDS {
         volatile uint8_t rxne : 1;
@@ -52,7 +55,7 @@ union SPI_SR {
 // MISO - MOSI - SCK - NSS
 struct PinConfig pin_config_spi1 = {
     {{PIN('A', 6), GPIO_MODE_AF, 5}, {PIN('A', 7), GPIO_MODE_AF, 5}, {PIN('A', 5), GPIO_MODE_AF, 5}, {PIN('A', 4), GPIO_MODE_AF, 5} },
-    4, 
+    3, 
     (volatile uint32_t*)&RCC->APB2ENR,
     12
 };

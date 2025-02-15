@@ -29,7 +29,7 @@ static inline void gpio_set_af(uint16_t pin, uint8_t af_num) {
 
 int8_t gpio_set_pin_configs(struct PinConfig* pin_config) {
 
-  if (pin_config == 0) return -1;
+
   for (int i = 0; i < pin_config->len; i++) {
     uint16_t pin = pin_config->pin_config[i].pin;
     gpio_set_mode(pin, pin_config->pin_config[i].function);

@@ -1158,3 +1158,729 @@ Breakpoint 2, main () at main.c:101
 $3 = 0x0
 Warnung: Error detected on fd 0
 error detected on stdin
+delay (count=count@entry=0x2710) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000bc0: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c54 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000c26: file main.c, line 101.
+Continuing.
+
+Breakpoint 2, main () at main.c:101
+$1 = 1292288
+
+Program received signal SIGINT, Interrupt.
+data_received () at usr/ads131m04.h:69
+Continuing.
+
+Breakpoint 2, main () at main.c:101
+Haltepunkt 3 at 0x8000c16: file main.c, line 99.
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x08000bc0 in main at main.c:59
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x08000c26 in main at main.c:101
+	breakpoint already hit 2 times
+3       breakpoint     keep y   0x08000c16 in main at main.c:99
+0x080007c6 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:101
+Haltepunkt 1 at 0x8000bc0: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c54 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000c16: file main.c, line 99.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x080007c6 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:101
+0x08000262 in delay (count=count@entry=0x2710) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000bc4: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c58 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000c1a: file main.c, line 99.
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:314
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+$1 = 0xffef5100
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+$2 = 0x79d00
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+readData (DataStruct=DataStruct@entry=0x2001ffe4) at usr/ads131m04.h:314
+spiSendReceiveByte (data=data@entry=0x0) at usr/ads131m04.h:103
+spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff9e "", dataRx=dataRx@entry=0x2001ff9f "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:87
+delay (count=count@entry=0x64) at sys/ss_delay.h:7
+
+Program received signal SIGINT, Interrupt.
+delay (count=count@entry=0x64) at sys/ss_delay.h:8
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+Undefined command: "qq".  Try "help".
+0x08000866 in gpio_read (pin=0x4) at sys/ss_gpio.h:110
+Haltepunkt 1 at 0x8000bc4: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c58 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+delay (count=count@entry=0x2710) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000bec: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c80 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000c42: file main.c, line 99.
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+$1 = 0x142f00
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+$2 = 0x142f00
+Continuing.
+
+Breakpoint 2, main () at main.c:99
+$3 = 0x35dd00
+0x0800025e in delay (count=count@entry=0x2710) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+$1 = {0xffa1, 0xa1 <repeats 26 times>, 0x28, 0xa1, 0xa1, 0xa1, 0x28, 0xa1, 0xa1, 0xa1, 0x28, 0xa1 <repeats 20 times>, 0xa0, 0xa1, 0xa1, 0xffa1, 0xa1, 0xa1, 0xa1, 0xffa1}
+0x0800026a in delay (count=count@entry=0x2710) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+0x2001ff78:	0x00a1ffa1	0x00a000a1	0x00a1ffa1	0x00a100a1
+0x2001ff88:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x2001ff98:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x2001ffa8:	0x00a1ffa1	0x002800a1	0x00a100a1	0x002800a1
+0x2001ffb8:	0x00a100a1	0x002800a1	0x00a100a1	0x00a100a1
+0x2001ffc8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001ffd8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001ffe8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001fff8:	0x00000000	0x08000cd9	0x00000000	0x00000000
+0x20020008:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020018:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020028:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020038:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020048:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020058:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020068:	0x00000000	0x00000000	0x00000000	0x00000000
+0x2001ff78:	0x00a1ffa1	0x00a000a1
+0x2001ff78:	0x00a1ffa1	0x00a000a1	0x00a1ffa1	0x00a100a1
+0x2001ff88:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x2001ff98:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x2001ffa8:	0x00a1ffa1	0x002800a1	0x00a100a1	0x002800a1
+0x2001ffb8:	0x00a100a1	0x002800a1	0x00a100a1	0x00a100a1
+0x2001ffc8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001ffd8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001ffe8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001fff8:	0x00000000	0x08000cd9	0x00000000	0x00000000
+0x20020008:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020018:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020028:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020038:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020048:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020058:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020068:	0x00000000	0x00000000	0x00000000	0x00000000
+0x200004d8 <registerMap>:	0x00a1ffa1	0x00a000a1	0x00a1ffa1	0x00a100a1
+0x200004e8 <registerMap+16>:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x200004f8 <registerMap+32>:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x20000508 <registerMap+48>:	0x00a1ffa1	0x002800a1	0x00a100a1	0x002800a1
+0x20000518 <registerMap+64>:	0x00a100a1	0x002800a1	0x00a100a1	0x00a100a1
+0x20000528 <registerMap+80>:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x20000538 <registerMap+96>:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x20000548 <registerMap+112>:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x20000558 <rst_pin>:	0x00040003	0xf8432000	0xf8c10035	0xf8d30244
+0x20000568:	0x430a121c	0x221cf8c3	0x2200f8d3	0x0201f022
+0x20000578:	0x2200f8c3	0x61e369e3	0xf42369e3	0x61e32370
+0x20000588:	0xf44369e3	0x61e32310	0xf42369e3	0x61e303e0
+0x20000598:	0xf44369e3	0x61e30380	0xf3607823	0x70230300
+0x200005a8:	0x07db7923	0x6963d4fc	0x0302f043	0x4b046163
+0x200005b8:	0xbf0c429c	0x20402014	0xff12f7ff	0xbd382000
+0x200005c8:	0x40006400	0x4605b5f8	0xf7ff4608	0x4e13ff53
+Quit
+main () at main.c:101
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+0x2001ff78:	0x00a100a1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x2001ff88:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x2001ff98:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x2001ffa8:	0x00a1ffa1	0x002800a1	0x00a100a1	0x002800a1
+0x2001ffb8:	0x00a100a1	0x002800a1	0x00a100a1	0x00a100a1
+0x2001ffc8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001ffd8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001ffe8:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x2001fff8:	0x00000000	0x08000cd9	0x00000000	0x00000000
+0x20020008:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020018:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020028:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020038:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020048:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020058:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20020068:	0x00000000	0x00000000	0x00000000	0x00000000
+0x200004d8 <registerMap>:	0x00a100a1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x200004e8 <registerMap+16>:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x200004f8 <registerMap+32>:	0x00a1ffa1	0x00a100a1	0x00a1ffa1	0x00a100a1
+0x20000508 <registerMap+48>:	0x00a1ffa1	0x002800a1	0x00a100a1	0x002800a1
+0x20000518 <registerMap+64>:	0x00a100a1	0x002800a1	0x00a100a1	0x00a100a1
+0x20000528 <registerMap+80>:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x20000538 <registerMap+96>:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x20000548 <registerMap+112>:	0x00a100a1	0xffa100a1	0x00a100a1	0xffa100a1
+0x20000558 <rst_pin>:	0x00040003	0xf8432000	0xf8c10035	0xf8d30244
+0x20000568:	0x430a121c	0x221cf8c3	0x2200f8d3	0x0201f022
+0x20000578:	0x2200f8c3	0x61e369e3	0xf42369e3	0x61e32370
+0x20000588:	0xf44369e3	0x61e32310	0xf42369e3	0x61e303e0
+0x20000598:	0xf44369e3	0x61e30380	0xf3607823	0x70230300
+0x200005a8:	0x07db7923	0x6963d4fc	0x0302f043	0x4b046163
+0x200005b8:	0xbf0c429c	0x20402014	0xff12f7ff	0xbd382000
+0x200005c8:	0x40006400	0x4605b5f8	0xf7ff4608	0x4e13ff53
+main () at main.c:101
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+0x200004d8 <registerMap>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x200004e8 <registerMap+16>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x200004f8 <registerMap+32>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20000508 <registerMap+48>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20000518 <registerMap+64>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20000528 <registerMap+80>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20000538 <registerMap+96>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20000548 <registerMap+112>:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20000558 <rst_pin>:	0x00000000	0xf8432000	0xf8c10035	0xf8d30244
+0x20000568:	0x430a121c	0x221cf8c3	0x2200f8d3	0x0201f022
+0x20000578:	0x2200f8c3	0x61e369e3	0xf42369e3	0x61e32370
+0x20000588:	0xf44369e3	0x61e32310	0xf42369e3	0x61e303e0
+0x20000598:	0xf44369e3	0x61e30380	0xf3607823	0x70230300
+0x200005a8:	0x07db7923	0x6963d4fc	0x0302f043	0x4b046163
+0x200005b8:	0xbf0c429c	0x20402014	0xff12f7ff	0xbd382000
+0x200005c8:	0x40006400	0x4605b5f8	0xf7ff4608	0x4e13ff53
+main () at main.c:103
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+main () at main.c:59
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000c66: file main.c, line 103.
+Continuing.
+
+Breakpoint 2, main () at main.c:103
+$1 = 0xffc9a900
+Undefined command: "adc_data.channel3".  Try "help".
+$2 = 0xffc9a900
+$3 = 0xffc9a900
+Continuing.
+
+Breakpoint 2, main () at main.c:103
+$4 = 0x3a3e00
+Warnung: Source file is more recent than executable.
+0x08000ca0 in DefaultHandler () at main.c:125
+Haltepunkt 1 at 0x8000c04: file main.c, line 60.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+Unable to set adapter speed
+mem2array: Read @ 0xe0042004, w=4, cnt=1, failed
+Error executing event examine-end on target stm32f4x.cpu:
+/usr/bin/../share/openocd/scripts/mem_helper.tcl:6: Error: 
+in procedure 'ocd_process_reset' 
+in procedure 'ocd_process_reset_inner' called at file "embedded:startup.tcl", line 288
+in procedure 'mmw' called at file "/usr/bin/../share/openocd/scripts/target/stm32f4x.cfg", line 85
+in procedure 'mrw' called at file "/usr/bin/../share/openocd/scripts/mem_helper.tcl", line 36
+at file "/usr/bin/../share/openocd/scripts/mem_helper.tcl", line 6
+SRST error
+
+Warning:
+Cannot insert hardware breakpoint 1.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+tools/gdbinit:57: Error in sourced command file:
+Command aborted.
+Warning:
+Cannot insert hardware breakpoint 1.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Warning:
+Cannot insert hardware breakpoint 1.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Warning:
+Cannot insert hardware breakpoint 1.
+Could not insert hardware breakpoints:
+You may have requested too many hardware breakpoints/watchpoints.
+
+Command aborted.
+Warnung: Source file is more recent than executable.
+0x08000262 in delay (count=count@entry=0x64) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000c04: file main.c, line 60.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:60
+Warnung: Source file is more recent than executable.
+systick_init (ticks=0x3e80) at sys/ss_systick.h:22
+Haltepunkt 1 at 0x8000c04: file main.c, line 60.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:60
+adcStartup () at usr/ads131m04.h:74
+0x08000260 in delay (count=count@entry=0x64) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+adcStartup () at usr/ads131m04.h:74
+setSYNC_RESET (val=0x1) at usr/ads131m04.h:83
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+get_spi_pins (spi_id=spi_id@entry=0x1) at sys/ss_spi.h:13
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:67
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+delay (count=count@entry=0x64) at sys/ss_delay.h:8
+delay (count=count@entry=0x64) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+adcStartup () at usr/ads131m04.h:74
+0x08000b82 in delay_us (val=0x32) at usr/ads131m04.h:74
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+get_spi_pins (spi_id=spi_id@entry=0x1) at sys/ss_spi.h:13
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:32
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:67
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:75
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+main () at main.c:65
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x800028a: file sys/ss_gpio.h, line 25.
+Continuing.
+
+Breakpoint 2, 0x0800028a in gpio_set_af (af_num=<optimized out>, pin=<optimized out>) at sys/ss_gpio.h:25
+$1 = <optimized out>
+gpio_set_pin_configs (pin_config=<optimized out>) at sys/ss_gpio.h:33
+Continuing.
+
+Breakpoint 2, 0x0800028a in gpio_set_af (af_num=<optimized out>, pin=<optimized out>) at sys/ss_gpio.h:25
+$2 = <optimized out>
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+delay (count=count@entry=0x64) at sys/ss_delay.h:8
+delay (count=count@entry=0x64) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+No symbol "gpio_set_af" in current context.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+delay (count=count@entry=0x64) at sys/ss_delay.h:8
+delay (count=count@entry=0x64) at sys/ss_delay.h:8
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x800028a: file sys/ss_gpio.h, line 25.
+Continuing.
+
+Breakpoint 2, 0x0800028a in gpio_set_af (af_num=<optimized out>, pin=<optimized out>) at sys/ss_gpio.h:25
+$1 = <optimized out>
+0x0800028a in gpio_set_af (af_num=<optimized out>, pin=<optimized out>) at sys/ss_gpio.h:25
+Haltepunkt 1 at 0x8000c04: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000ca4 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x800027c: gpio_set_pin_configs. (2 locations)
+Continuing.
+
+Breakpoint 2, gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:32
+$1 = (struct PinConfig *) 0x20000080 <pin_config_spi1>
+$2 = {pin_config = {{pin = 0x6, function = 0x2, af_mode = 0x5}, {pin = 0x7, function = 0x2, af_mode = 0x5}, {pin = 0x5, function = 0x2, af_mode = 0x5}, {pin = 0x4, function = 0x2, af_mode = 0x5}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}}, len = 0x4, rcc = 0x40023844, pos = 0xc}
+
+Breakpoint 2, 0x08000288 in gpio_set_pin_configs (pin_config=<optimized out>) at sys/ss_gpio.h:33
+0x0800028a in gpio_set_af (af_num=<optimized out>, pin=<optimized out>) at sys/ss_gpio.h:25
+gpio_set_pin_configs (pin_config=<optimized out>) at sys/ss_gpio.h:33
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:30
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:67
+spiSendReceiveByte (data=data@entry=0x0) at usr/ads131m04.h:105
+Haltepunkt 1 at 0x8000c10: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000cb0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+$1 = (struct spi *) 0x40013000
+$2 = 0x4f5f
+Size letters are meaningless in "print" command.
+$3 = 100111101011111
+$4 = 100111101011111
+$5 = 100111101011111
+0x080007de in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff1e "", dataRx=dataRx@entry=0x2001ff1f " \037\377\001 \a\n", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:97
+Haltepunkt 1 at 0x8000c10: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000cb0 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+Undefined command: "nn".  Try "help".
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:66
+main () at main.c:63
+$1 = 0x4f5f
+$2 = (volatile uint32_t *) 0x40013000
+0x080007de in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff9e "", dataRx=dataRx@entry=0x2001ff9f " \237\377\001 #\n", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:98
+Haltepunkt 1 at 0x8000bf8: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c94 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+inti_pb_pins () at usr_configs/pin_declarations.h:27
+gpio_write (pin=0x35, value=value@entry=0x1) at sys/ss_gpio.h:92
+main () at main.c:61
+main () at main.c:63
+Haltepunkt 1 at 0x8000bf8: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c94 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:66
+0x08000746 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:109
+Haltepunkt 1 at 0x8000b60: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000bfc msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000bd2: file main.c, line 108.
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x08000746 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:109
+0x08000752 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:110
+Haltepunkt 1 at 0x8000b78: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c14 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+
+Program received signal SIGINT, Interrupt.
+spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:110
+0x08000750 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:111
+Haltepunkt 1 at 0x8000b78: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c14 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+$1 = 0x0
+main () at main.c:63
+Haltepunkt 1 at 0x8000b78: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c14 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:86
+$1 = 0x0
+$2 = 0x0
+0x08000770 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\177\020", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:122
+Haltepunkt 1 at 0x8000ba0: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c3c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+$1 = 0x35f
+$2 = 1101011111
+
+Program received signal SIGINT, Interrupt.
+main () at main.c:59
+0x08000768 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\177\020", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:122
+Haltepunkt 1 at 0x8000b98: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c34 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+$1 = 0x35f
+Quit
+spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\177\020", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:122
+Haltepunkt 1 at 0x8000b98: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c34 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+$1 = 0x35f
+main () at main.c:63
+Haltepunkt 1 at 0x8000b98: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c34 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:67
+$1 = 0x35f
+0x08000772 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:115
+Haltepunkt 1 at 0x8000b90: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c2c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:67
+get_spi_pins (spi_id=0x1) at sys/ss_spi.h:13
+$1 = (struct PinConfig *) 0x0
+0x08000772 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:114
+Haltepunkt 1 at 0x8000b90: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c2c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+$1 = (struct PinConfig *) 0x20000080 <pin_config_spi1>
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:32
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:86
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:87
+Haltepunkt 1 at 0x8000b90: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c2c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+main () at main.c:63
+Haltepunkt 1 at 0x8000b90: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c2c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:32
+$1 = (struct PinConfig *) 0x20000080 <pin_config_spi1>
+$2 = {pin_config = {{pin = 0x6, function = 0x2, af_mode = 0x5}, {pin = 0x7, function = 0x2, af_mode = 0x5}, {pin = 0x5, function = 0x2, af_mode = 0x5}, {pin = 0x4, function = 0x2, af_mode = 0x5}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}}, len = 0x4, rcc = 0x40023844, pos = 0xc}
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:86
+Quit
+0x08000772 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:114
+Haltepunkt 1 at 0x8000b90: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c2c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+Undefined command: "nn".  Try "help".
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:32
+0x08000288 in gpio_set_pin_configs (pin_config=<optimized out>) at sys/ss_gpio.h:35
+Haltepunkt 1 at 0x8000b90: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c2c msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:32
+$1 = (struct PinConfig *) 0x20000080 <pin_config_spi1>
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:86
+#0  SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:86
+#1  0x080007f0 in init_ads131_wrapper () at usr/ads131m04.h:65
+#2  0x08000b9c in main () at main.c:61
+spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:117
+Haltepunkt 1 at 0x8000b84: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c20 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:33
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:86
+main () at main.c:63
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x08000776 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:117
+0x08000776 in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:117
+Haltepunkt 1 at 0x8000b84: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c20 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+init_ads131_wrapper () at usr/ads131m04.h:53
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:65
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:33
+$1 = (struct PinConfig *) 0x20000080 <pin_config_spi1>
+$2 = {pin_config = {{pin = 0x6, function = 0x2, af_mode = 0x5}, {pin = 0x7, function = 0x2, af_mode = 0x5}, {pin = 0x5, function = 0x2, af_mode = 0x5}, {pin = 0x4, function = 0x2, af_mode = 0x5}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}, {pin = 0x0, function = 0x0, af_mode = 0x0}}, len = 0x4, rcc = 0x40023844, pos = 0xc}
+$3 = <optimized out>
+$4 = 0x6
+gpio_set_mode (pin=pin@entry=0x6, mode=0x2) at sys/ss_gpio.h:14
+$5 = 0x2
+$6 = 0x6
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:36
+gpio_set_af (af_num=<optimized out>, pin=<optimized out>) at sys/ss_gpio.h:37
+gpio_set_af (af_num=0x5, pin=<optimized out>) at sys/ss_gpio.h:25
+$7 = 0x5
+gpio_set_pin_configs (pin_config=0x20000080 <pin_config_spi1>) at sys/ss_gpio.h:33
+$8 = 0x7
+$9 = 0x5
+$10 = 0x4
+SPI_Init (spi_id=spi_id@entry=0x1, bitrate=bitrate@entry=0xf4240) at sys/ss_spi.h:86
+main () at main.c:63
+
+Program received signal SIGINT, Interrupt.
+spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:114
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+gdb.error: Remote Verbindung wurde beendet
+tools/gdbinit:54: Error in sourced command file:
+Error while executing Python code.
+The program is not being run.
+spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\177\020", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:122
+Haltepunkt 1 at 0x8000b8c: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c28 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+
+Program received signal SIGINT, Interrupt.
+0x0800075c in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\177\020", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:122
+0x0800075c in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\177\020", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:122
+Haltepunkt 1 at 0x8000b8c: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c28 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+
+Program received signal SIGINT, Interrupt.
+0x0800075c in spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "\177\020", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:122
+Warnung: Source file is more recent than executable.
+Haltepunkt 2 at 0x8000748: file sys/ss_spi.h, line 104.
+Continuing.
+target not halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x21000000 pc: 0x08000748 msp: 0x2001ff98
+
+Program received signal SIGINT, Interrupt.
+spiSendReceiveArrays (spi_id=0x1, dataTx=0x2001ff9e "", dataRx=0x2001ff9f " \237\377\001 \257\t", numberOfBytes=0x1) at sys/ss_spi.h:104
+spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff9e "", dataRx=dataRx@entry=0x2001ff9f " \237\377\001 \257\t", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:104
+Haltepunkt 1 at 0x8000b84: file main.c, line 59.
+Anmerkung: Hardware-Haltepunkte für Nur-Lesen-Adressen werden automatisch benutzt.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000c20 msp: 0x20020000
+
+Breakpoint 1, main () at main.c:59
+Haltepunkt 2 at 0x8000748: file sys/ss_spi.h, line 104.
+Continuing.
+
+Breakpoint 2, spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 "", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:104
+spiSendReceiveByte (data=<optimized out>) at usr/ads131m04.h:106
+sendCommand (opcode=<optimized out>, opcode@entry=0x0) at usr/ads131m04.h:491
+Continuing.
+
+Breakpoint 2, spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 " \227\377\001 [\n", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:104
+spiSendReceiveByte (data=<optimized out>) at usr/ads131m04.h:106
+sendCommand (opcode=<optimized out>, opcode@entry=0x0) at usr/ads131m04.h:491
+Continuing.
+
+Breakpoint 2, spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ff96 "", dataRx=dataRx@entry=0x2001ff97 " \227\377\001 [\n", numberOfBytes=numberOfBytes@entry=0x1) at sys/ss_spi.h:104
+Continuing.
+
+Breakpoint 2, spiSendReceiveArrays (spi_id=spi_id@entry=0x1, dataTx=dataTx@entry=0x2001ffa8 "a\200", dataRx=dataRx@entry=0x2001ffb0 "", numberOfBytes=0x6) at sys/ss_spi.h:104
+$1 = (struct gpio *) 0x40020000
+$2 = 0xa801a840
+$3 = 10101000000000011010100001000000
+$4 = 1010101010100000000000000000000

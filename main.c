@@ -71,11 +71,14 @@ int main(void) {
 
   gpio_write(pin_heartbeat, GPIO_OFF);
 
+  
   adc_channel_data adc_data;
 
   struct CanFrame adc_can_frame;
   adc_can_frame.id = 0xFF;
   adc_can_frame.dlc = 4;
+  
+
 
 
   for (;;) {
@@ -94,13 +97,17 @@ int main(void) {
       gpio_write(pin_heartbeat, GPIO_TOGGLE);
     }  
     */
+    
+    if (handle_timer(&handle1)) {
+      uint32ToUint8Array_LE(adc_data.channel3, adc_can_frame.data);
+      can_send(&adc_can_frame, 1);
+    }
+
 
     if (data_received()) {
       readData(&adc_data);
-      uint32ToUint8Array_LE(adc_data.channel3, adc_can_frame.data);
-      can_send(&adc_can_frame, 1);
-      delay(10000);
     }
+    
  
 
 

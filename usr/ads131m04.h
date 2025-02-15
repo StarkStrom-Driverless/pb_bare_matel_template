@@ -67,7 +67,7 @@ void init_ads131_wrapper() {
 
 uint8_t data_received() {
     uint8_t data = gpio_read(rx_ads);
-    return (!data)?0:1;
+    return (!data)?1:0;
 }
 
 void delay_us(uint16_t val) {
@@ -104,6 +104,15 @@ uint8_t spiSendReceiveByte(uint8_t data) {
     uint8_t dataRx;
     spiSendReceiveArrays(1, &dataTx, &dataRx, 1);
     return dataRx;
+}
+
+void read_all_registers(uint16_t* tmp) {
+    
+
+    for (uint8_t i = 0; i < NUM_REGISTERS; i++) {
+        tmp[i] = readSingleRegister(i);
+    }
+
 }
 
  //****************************************************************************
@@ -178,10 +187,10 @@ uint8_t spiSendReceiveByte(uint8_t data) {
  
      /* (OPTIONAL) Toggle nRESET pin to ensure default register settings. */
      /* NOTE: This also ensures that the device registers are unlocked.	 */
-     //delay_ms(5);
-     //toggleRESET();
-     //delay_ms(5);
-     //toggleRESET();
+     delay_ms(5);
+     toggleRESET();
+     delay_ms(5);
+     toggleRESET();
  
      /* (REQUIRED) Initialize internal 'registerMap' array with device default settings */
      restoreRegisterDefaults();
@@ -763,6 +772,7 @@ uint8_t spiSendReceiveByte(uint8_t data) {
      registerMap[CFG_ADDRESS]            =   CFG_DEFAULT;
      registerMap[THRSHLD_MSB_ADDRESS]    =   THRSHLD_MSB_DEFAULT;
      registerMap[THRSHLD_LSB_ADDRESS]    =   THRSHLD_LSB_DEFAULT;
+
      registerMap[CH0_CFG_ADDRESS]        =   CH0_CFG_DEFAULT;
      registerMap[CH0_OCAL_MSB_ADDRESS]   =   CH0_OCAL_MSB_DEFAULT;
      registerMap[CH0_OCAL_LSB_ADDRESS]   =   CH0_OCAL_LSB_DEFAULT;
@@ -819,6 +829,8 @@ uint8_t spiSendReceiveByte(uint8_t data) {
  #endif
      registerMap[REGMAP_CRC_ADDRESS]     =   REGMAP_CRC_DEFAULT;
  }
+
+
  
  
  
